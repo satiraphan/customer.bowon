@@ -1,4 +1,24 @@
 var database = {
+	company : {
+		bank : {
+			dialog_lookup : fn.noaccess,
+			dialog_add : fn.noaccess,
+			dialog_edit : fn.noaccess,
+			dialog_remove : fn.noaccess,
+			add : fn.noaccess,
+			edit : fn.noaccess,
+			remove : fn.noaccess
+		},
+		currency : {
+			dialog_lookup : fn.noaccess,
+			dialog_add : fn.noaccess,
+			dialog_edit : fn.noaccess,
+			dialog_remove : fn.noaccess,
+			add : fn.noaccess,
+			edit : fn.noaccess,
+			remove : fn.noaccess
+		}
+	},
 	address : {
 		initial : fn.noaccess,
 		load_country : fn.noaccess,

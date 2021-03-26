@@ -68,7 +68,7 @@ class concurrent{
 			"#updated" => "NOW()"
 		);
 
-		$this->dbc->Insert("concurrents",$data);
+		$this->dbc->Insert("os_concurrents",$data);
 		$_SESSION['concurrent'] = array(
 			"id" => $this->dbc->GetID(),
 			"created" => time(),
@@ -84,7 +84,7 @@ class concurrent{
 			"#updated" => "NOW()"
 		);
 		
-		$this->dbc->Update("concurrents",$data,"session_id LIKE '".$session_id."'");
+		$this->dbc->Update("os_concurrents",$data,"session_id LIKE '".$session_id."'");
 		$_SESSION['concurrent']['updated'] = time();
 	}
 	
@@ -102,9 +102,9 @@ class concurrent{
 			"#login" => "NULL",
 			"#connected" => "NULL"
 		);
-		$this->dbc->Update("concurrents",$data,"connected < DATE_SUB(NOW(),INTERVAL 5 SECOND)");
+		$this->dbc->Update("os_concurrents",$data,"connected < DATE_SUB(NOW(),INTERVAL 5 SECOND)");
 		
-		$line = $dbc->GetRecord("concurrents","COUNT(id)","status = 0");
+		$line = $dbc->GetRecord("os_concurrents","COUNT(id)","status = 0");
 		if($line[0] == 0){
 			return false;
 		}else{
@@ -116,7 +116,7 @@ class concurrent{
 	function allocate(){
 		global $_SESSION;
 		$dbc = $this->dbc;
-		$line = $dbc->GetRecord("concurrents","token","status = 0 LIMIT 0,1");
+		$line = $dbc->GetRecord("os_concurrents","token","status = 0 LIMIT 0,1");
 		return $line['token'];
 	}
 	
@@ -134,7 +134,7 @@ class concurrent{
 			"#connected" => "NOW()"
 		);
 
-		$this->dbc->Update("concurrents",$data,"token='".$token."'");
+		$this->dbc->Update("os_concurrents",$data,"token='".$token."'");
 	}
 	
 	function unallocate(){
@@ -151,7 +151,7 @@ class concurrent{
 			"#connected" => "NULL"
 		);
 
-		$this->dbc->Update("concurrents",$data,"session_id='".$session_id."'");
+		$this->dbc->Update("os_concurrents",$data,"session_id='".$session_id."'");
 	}
 
 	

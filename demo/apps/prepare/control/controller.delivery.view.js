@@ -1,0 +1,56 @@
+$("#tblDelivery").data( "selected", [] );
+$("#tblDelivery").DataTable({
+	responsive: true,
+	"bStateSave": true,
+	"autoWidth" : true,
+	"processing": true,
+	"serverSide": true,	
+	"ajax": {
+		"url": "apps/sales/store/store-delivery.php",
+		"data": function ( d ) {
+			
+			d.date_from = $("form[name=filter] input[name=from]").val();
+			d.date_to = $("form[name=filter] input[name=to]").val();
+			
+		}
+	},
+	"aoColumns": [
+		{"bSortable":false		,"data":"id"	,"sClass":"hidden-xs text-center",	"sWidth": "20px"  },
+		{"bSort":true			,"data":"code",	"class":"text-center"	},
+		{"bSort":true			,"data":"type",	"class":"text-center"	},
+		{"bSort":true			,"data":"customer_name",	"class":"text-center"},
+		{"bSort":true			,"data":"amount",			"class":"text-right pr-2"	},
+		{"bSort":true			,"data":"date",				"class":"text-center"	},
+		{"bSort":true			,"data":"delivery_date",	"class":"text-center"	},
+		{"bSortable":false		,"data":"id",				"class":"text-center"	},
+		{"bSortable":false		,"data":"id",				"class":"text-center"	},
+		{"bSortable":false		,"data":"status","class":"text-center"  }
+	],"order": [[ 3, "desc" ]],
+	"createdRow": function ( row, data, index ) {
+		var selected = false,checked = "",s = '';
+		if ( $.inArray(data.DT_RowId, $("#tblDelivery").data( "selected")) !== -1 ) {
+			$(row).addClass("selected");
+			selected = true;
+		}
+		$("td", row).eq(0).html(fn.ui.checkbox("chk_order",data[0],selected));
+		//$("td", row).eq(1).html(fn.ui.button("btn btn-xs btn-outline-dark","far fa-cut","fn.app.schedule.order.dialog_split("+data[0]+")"));
+		
+		if(data.type == "1"){
+			$("td", row).eq(2).html('<span class="badge badge-warning">single</span>');
+		}else if(data.type == "2"){
+			$("td", row).eq(2).html('<span class="badge badge-primary">combined</span>');
+		}
+		
+		s = '';
+		if(data.status =="1"){
+			s += fn.ui.button("btn btn-xs btn-outline-danger mr-1","far fa-boxes","fn.app.sales.delivery.dialog_packing("+data[0]+")");
+		}else{
+			s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-boxes","fn.app.sales.delivery.dialog_packing("+data[0]+")");
+		}
+		
+		
+		$("td", row).eq(7).html(s);
+	
+	}
+});
+fn.ui.datatable.selectable("#tblDelivery","chk_order");

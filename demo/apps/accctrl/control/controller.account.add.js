@@ -50,6 +50,6 @@
 		icon_type : "material",
 		icon : "add_circle_outline",
 		onclick : "fn.app.accctrl.account.dialog_add()",
-		caption : "Add"
+		caption : lang.main.add
 	}));
 	

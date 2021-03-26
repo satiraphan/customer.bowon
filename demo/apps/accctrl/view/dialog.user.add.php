@@ -52,8 +52,8 @@
 			)
 		),array(
 			array(
-				"type" => "combobox",
-				"source" => array("นาย","นางสาว","Mr.","Miss."),
+				"type" => "comboboxdatabank",
+				"source" => "db_title",
 				"flex" => 2,
 				"name" => "title",
 				"caption" => "Title"

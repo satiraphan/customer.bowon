@@ -159,7 +159,7 @@
 <div class="widget-body-toolbar">
 	<div class="row">
 		<div class="col-sm-6">
-			<button id="enable" class="btn btn btn-default" onclick="">
+			<button id="enable" class="btn btn btn-outline-dark" onclick="">
 				แก้ไข
 			</button>
 		</div>

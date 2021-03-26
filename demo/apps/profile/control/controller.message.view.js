@@ -23,7 +23,7 @@ $('#tblMessage').DataTable({
 		$('td', row).eq(1).html(moment(data.created).format("DD/MM/YYYY HH:mm:ss"));
 
 		s = '';
-		s += fn.ui.button("btn btn-xs btn-default","fa fa-eye","fn.app.profile.message.dialog_open("+data.id+")");
+		s += fn.ui.button("btn btn-xs btn-outline-dark","fa fa-eye","fn.app.profile.message.dialog_open("+data.id+")");
 		$('td', row).eq(5).html(s);
 	}
 });

@@ -92,12 +92,13 @@ fn.ui = {
 						if ( index === -1 ) {
 							table.data( "selected").push( id );
 							$(me).find('span[type=checkbox]').removeClass("fa-square").addClass("fa-check-square");
+							
 						} else {
 							table.data( "selected").splice( index, 1 );
 							$(me).find('span[type=checkbox]').removeClass("fa-check-square").addClass("fa-square");
 						}
 					
-					$(me).toggleClass('selected');
+					$(me).toggleClass('selected').trigger('selecting');
 				});
 				table.find("span[type=checkall]").click(function(){
 					var checkbox = $(this);
@@ -118,7 +119,7 @@ fn.ui = {
 								var index = $.inArray(id, table.data( "selected"));
 								if ( index != -1 ) {
 									table.data("selected").splice( index, 1 );
-									tr.removeClass("selected");
+									tr.removeClass("selected").trigger('selecting');
 								}
 							});
 						}else{
@@ -131,7 +132,7 @@ fn.ui = {
 									var index = $.inArray(id, table.data("selected"));
 									if ( index === -1 ) {
 										table.data( "selected").push( id );
-										tr.addClass("selected");
+										tr.addClass("selected").trigger('selecting');
 									}
 								}
 							});
@@ -146,12 +147,15 @@ fn.ui = {
 					$(me).find('span[type=checkbox]').removeClass("fa-circle").addClass("fa-dot-circle");
 					table.data( "selected", id );
 					table.find('tr').removeClass('selected');
-					$(me).addClass('selected');
+					$(me).addClass('selected').trigger('selecting');
 				});
 			}
 		}
 	},
 	numberic :{
+		format : function(num){
+			return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+		},
 		phone : function(text){
 			if(isNaN(text)){
 				if(text.length==10){

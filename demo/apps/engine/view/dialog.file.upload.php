@@ -91,6 +91,14 @@
 						}
 					}
 					break;
+				case "bank":
+					$bank = $dbc->GetRecord("bs_banks","*","id=".$this->param['id']);
+					if(!is_null($bank['icon']) && $bank['icon'] != ""){
+						if(file_exists("../../../".$bank['icon'])){
+							$path = $bank['icon'];
+						}
+					}
+					break;
 				
 			}
 			

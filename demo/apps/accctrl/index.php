@@ -16,7 +16,7 @@
 	$panel->setView(isset($_GET['view'])?$_GET['view']:'user');
 	
 	$panel->setMeta(array(
-		array('account'	,"Account",					'far fa-building'),
+		array('account'	,$os->tr('main.account'),	'far fa-building'),
 		array('group'	,$os->tr('main.group'),		'far fa-clone'),
 		array('user'	,$os->tr('main.user'),		'far fa-user')
 	));
@@ -36,20 +36,21 @@
 </div>
 <script>
 	var plugins = [
-			'apps/accctrl/include/interface.js',
-			'apps/contact/include/interface.js',
-			'apps/engine/include/interface.js',
-			'plugins/datatables/dataTables.bootstrap4.min.css',
-			'plugins/datatables/responsive.bootstrap4.min.css',
-			'plugins/datatables/jquery.dataTables.bootstrap4.responsive.min.js',
-			'plugins/select2/css/select2.min.css',
-			'plugins/select2/js/select2.min.js',
-			'plugins/moment/moment.min.js'
+		'apps/accctrl/include/interface.js',
+		'apps/contact/include/interface.js',
+		'apps/engine/include/interface.js',
+		'plugins/datatables/dataTables.bootstrap4.min.css',
+		'plugins/datatables/responsive.bootstrap4.min.css',
+		'plugins/datatables/jquery.dataTables.bootstrap4.responsive.min.js',
+		'plugins/select2/css/select2.min.css',
+		'plugins/select2/js/select2.min.js',
+		'plugins/moment/moment.min.js'
 	];
 	
 	App.loadPlugins(plugins, null).then(() => {
 		App.checkAll()
 		<?php
+		echo "\n".'var lang = '.($os->get_lang_json()).";\n";
 		switch($panel->getView()){
 			case "account":
 				include "control/controller.account.view.js";

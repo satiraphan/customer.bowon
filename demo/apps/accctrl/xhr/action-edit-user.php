@@ -50,8 +50,13 @@
 		$fulladdress = $os->load_fulladdress($_POST['address_id']);
 		$dbc->Update("os_address",array("fulladdress"=>$fulladdress),"id=".$_POST['address_id']);
 		
+		$display_name = $_POST['username'];
+		if($_POST['first']!="")$display_name = $_POST['first'];
+		if($_POST['surname']!="")$display_name .= " ".$_POST['surname'];
+		
 		$data = array(
 			'name' => $_POST['username'],
+			'display' => $display_name,
 			'#updated' => "NOW()",
 			'#gid' => $_POST['gid']
 		);

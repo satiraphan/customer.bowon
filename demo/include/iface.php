@@ -240,6 +240,13 @@
 									$this->LoopBluePrint($form_group['items']);
 									echo '</div>';
 									break;
+								case "inline":
+									echo '<div class="form-group'.(isset($form_group['class'])?" ".$form_group['class']:"").'">';
+									foreach($form_group['items'] as $control){
+										$this->EchoItem($control);
+									}
+									echo '</div>';
+									break;
 							}
 						}else{
 							echo '<div id="'.$form_group['group'].'">';
@@ -405,12 +412,20 @@
 						if($control['value']==true)$checked = " checked";
 						if($control['value']=="true")$checked = " checked";
 					}
+					$class = isset($control['class'])?" ".$control['class']:"";
 					echo '<div class="frame-wrap">';
-						echo '<div class="custom-control custom-checkbox">';
+						echo '<div class="custom-control custom-checkbox pt-2">';
 							echo '<input id="'.$control['name'].'" class="custom-control-input'.$class.'" type="checkbox" name="'.$control['name'].'" value="yes"'.$checked.'>';
 							if(isset($control['text']))echo '<label class="custom-control-label" for="'.$control['name'].'">'.$control['text'].'</label>';
 						echo '</div>';
 					echo '</div>';
+					/*
+					<div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="customCheck4">
+                  <label class="custom-control-label" for="customCheck4"></label>
+                </div>
+					*/
+					
 					break;
 				case "switchbox":
 					$checked = "";

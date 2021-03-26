@@ -15,9 +15,9 @@
 	define("DEFAULT_THEME","default");
 	define("SERVER_MARKET","oceanos.aquawams.com");
 	
-	define("ORG_NAME","Maewnam Network Solutions Co., Ltd.");
-	define("ORG_WEBSITE","https://www.maewnam.com");
-	define("SYSTEM_NAME","OceanOS Nebula");
+	define("ORG_NAME","BES (Bowins Enterprise System 4.0)");
+	define("ORG_WEBSITE","https://www.bowinsilvers.com");
+	define("SYSTEM_NAME","BES 4.0");
 	
 	define("GOOGLE_CLIENT_ID","410506135773-g2irchhj0gpjhp422ccfmj90ntbsajuk.apps.googleusercontent.com");
 	

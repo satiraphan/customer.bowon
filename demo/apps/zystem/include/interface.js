@@ -4,6 +4,9 @@ var zystem = {
 			dialog_build : fn.noaccess,
 			build : fn.noaccess,
 			append_subapp : fn.noaccess
+		},
+		concurrent : {
+			reset : fn.noaccess
 		}
 	},
 	core : {

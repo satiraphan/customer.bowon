@@ -2,6 +2,7 @@
 	$aSection = array(
 		array('overview'	,"Overview",	'fal fa-home'),
 		array('builder'		,"App Builder",	'fal fa-microchip'),
+		array('concurrent'	,"Concurrent",	'fal fa-microchip')
 	);
 
 ?>
@@ -22,11 +23,13 @@
 	<div class="col">
 	<?php
 		foreach($aSection as $sec){
-			echo '<div class="tab-content" id="v-pills-tabContent">';
-				echo '<div class="tab-pane fade'.($this->section==$sec[0]?" show active":"").'" id="v-pills-'.$sec[0].'" role="tabpanel" aria-labelledby="v-pills-'.$sec[0].'-tab">';
-					include "view/engine/page.".$sec[0].".php";
+			if($this->section==$sec[0]){
+				echo '<div class="tab-content" id="v-pills-tabContent">';
+					echo '<div class="tab-pane fade'.($this->section==$sec[0]?" show active":"").'" id="v-pills-'.$sec[0].'" role="tabpanel" aria-labelledby="v-pills-'.$sec[0].'-tab">';
+						include "view/engine/page.".$sec[0].".php";
+					echo '</div>';
 				echo '</div>';
-			echo '</div>';
+			}
 		}
 	?>
 	</div>

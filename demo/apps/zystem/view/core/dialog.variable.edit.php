@@ -21,7 +21,7 @@
 	$modal->setExtraClass("modal-lg");
 	$modal->setButton(array(
 		array("close","btn-secondary","Dismiss"),
-		array("action","btn-default","Save Change","fn.app.zystem.core.variable.edit()")
+		array("action","btn-outline-dark","Save Change","fn.app.zystem.core.variable.edit()")
 	));
 	$modal->SetVariable(array(
 		array("id",$variable['id'])

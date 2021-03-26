@@ -66,6 +66,9 @@
 					case "builder":
 						include "control/engine/controller.builder.js";
 						break;
+					case "concurrent":
+						include "control/engine/controller.concurrent.js";
+						break;
 				}
 				break;
 			

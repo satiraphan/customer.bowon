@@ -17,6 +17,14 @@
 	$removed = false;
 	
 	switch($_POST['type']){
+		case "bank":
+			$bank = $dbc->GetRecord("bs_banks","*","id=".$_POST['id']);
+			if($bank['icon']!=""){
+				$unlink = "../../../".$bank['icon'];
+				$removed = true;
+				$dbc->Update("bs_banks",array("#icon"=>"NULL"),"id=".$_POST['id']);
+			}
+			break;
 		case "contact":
 			$contact = $dbc->GetRecord("os_contacts","*","id=".$_POST['id']);
 			if($contact['avatar']!=""){

@@ -12,9 +12,10 @@
 	$dbc->Connect();
 	
 	$os = new oceanos($dbc);
+	$os->initial_lang("../lang");
 
 	$modal = new imodal($dbc,$os->auth);
-	$modal->setModel("dialog_add_account","Add Account");
+	$modal->setModel("dialog_add_account",$os->tr('account.dialog.add_header'));
 	$modal->initiForm("form_addaccount");
 	$modal->setExtraClass("modal-lg");
 	$modal->setButton(array(
@@ -29,7 +30,7 @@
 		array(
 			array(
 				"name" => "account",
-				"caption" => "Name",
+				"caption" => $os->tr('account.dialog.name'),
 				"placeholder" => "Account Name"
 			)
 		),array(
@@ -41,7 +42,7 @@
 					array(1,"Database"),
 					array(2,"New Company")
 				),
-				"caption" => "Type",
+				"caption" => $os->tr('account.dialog.type'),
 				"placeholder" => "Account Name"
 			),
 			array(

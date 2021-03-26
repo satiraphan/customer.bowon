@@ -22,6 +22,7 @@
 			'msg'=>'Username is already exist.'
 		));
 	}else{
+				
 		$data = array(
 			'#id' => "DEFAULT",
 			'title' => $_POST['title'],
@@ -45,6 +46,8 @@
 		$dbc->Insert("os_contacts", $data);
 		$contact_id = $dbc->GetID();
 		
+		
+		
 		$data = array(
 			'#id' => "DEFAULT",
 			'address' => $_POST['address'],
@@ -64,12 +67,17 @@
 		$address_id = $dbc->GetID();
 		$fulladdress = $os->load_fulladdress($address_id);
 		$dbc->Update("os_address",array("fulladdress"=>$fulladdress),"id=".$address_id);
-				
+		
+		$display_name = $_POST['username'];
+		if($_POST['first']!="")$display_name = $_POST['first'];
+		if($_POST['surname']!="")$display_name .= " ".$_POST['surname'];
+		
 		
 		$data = array(
 			'#id' => "DEFAULT",
 			'name' => $_POST['username'],
 			'#password' =>  "SHA2('".$_POST['password']."', 224)",
+			'display' => $display_name,
 			'status' => 1,
 			'#created' => "NOW()",
 			'#updated' => "NOW()",

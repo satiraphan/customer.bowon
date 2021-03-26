@@ -28,7 +28,7 @@
 		icon_type : "material",
 		icon : "delete",
 		onclick : "fn.app.accctrl.account.dialog_remove()",
-		caption : "Remove"
+		caption : lang.main.remove
 	}));
 	
 	

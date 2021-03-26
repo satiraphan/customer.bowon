@@ -33,7 +33,7 @@
 				</table>
 		    </div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancel</button>
 				<button type="submit" class="btn btn-primary btnSelect">Select</button>
 			</div>
 	  	</div>

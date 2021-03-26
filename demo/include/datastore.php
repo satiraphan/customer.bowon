@@ -1,4 +1,8 @@
 <?php
+/*
+ * 2021-03-08 : Allow Length Diabled : Todsaporn S.
+ * 
+ */
 class datastore extends dbc{
 	private $length = 30;
 	private $start = 0;
@@ -143,7 +147,12 @@ class datastore extends dbc{
 	}
 	
 	function getSQLLimit($start,$length){
-		$sql = " LIMIT ".$this->Escape_String($start).", ".$this->Escape_String($length);
+		if($length == -1){
+			$sql = "";
+		}else{
+			$sql = " LIMIT ".$this->Escape_String($start).", ".$this->Escape_String($length);
+		}
+		
 		return $sql;
 	}
 	

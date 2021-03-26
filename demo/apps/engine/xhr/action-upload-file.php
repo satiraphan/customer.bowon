@@ -16,6 +16,12 @@
 	$action = array();
 	
 	switch($_POST['type']){
+		case "bank":
+			$bank = $dbc->GetRecord("bs_banks","*","id=".$_POST['id']);
+			$iVariable = "iIcon";
+			$path_begin = 'binary/icon/';
+			if($bank['icon']!="")$unlink = "../../../".$bank['icon'];
+			break;
 		case "contact":
 			$contact = $dbc->GetRecord("os_contacts","*","id=".$_POST['id']);
 			$iVariable = "iAvatarNumber";
@@ -88,6 +94,11 @@
 				if($unlink!="")if(file_exists($unlink))unlink($unlink);
 				
 				switch($_POST['type']){
+					case "bank":
+						array_push($action,array("retable","#tblDatabase"));
+						array_push($action,array("rephoto","#preview_photo"));
+						$dbc->Update("bs_banks",array("icon" => $path),'id='.$_POST['id']);
+						break;
 					case "contact":
 						array_push($action,array("retable","#tblContact"));
 						array_push($action,array("retable","#tblUser"));

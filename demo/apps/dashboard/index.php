@@ -1,3 +1,22 @@
+<?php
+	session_start();
+	@ini_set('display_errors',1);
+	include "../../config/define.php";
+	include "../../include/db.php";
+	include "../../include/oceanos.php";
+	include "../../include/iface.php";
+	
+	$dbc = new dbc;
+	$dbc->Connect();
+	$os = new oceanos($dbc);
+	
+	
+	
+	
+	
+?>
+
+
 <div class="row gutters-sm">
 	<!-- Website Audience Metrics -->
 	<div class="col-xl-9 mb-3">
@@ -410,8 +429,10 @@
 	App.loadPlugins(plugins, null).then(() => {
 		// Data example
 		monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+		
 		data1 = [150, 110, 90, 115, 125, 160, 160, 140, 100, 110, 120, 120]
 		data2 = [180, 140, 120, 135, 155, 170, 180, 150, 140, 150, 130, 130]
+		
 		data3 = [100, 90, 60, 70, 100, 75, 90, 85, 90, 100, 95, 88]
 
 		// Chart options

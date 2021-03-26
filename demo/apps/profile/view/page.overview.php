@@ -120,7 +120,7 @@
 						<h6 class="d-flex align-items-center mb-3"><i class="material-icons text-warning mr-2">rss_feed</i>Recent Activities</h6>
 						<div class="timeline timeline-left font-size-sm">
 						<?php
-						$sql = "SELECT * FROM logs WHERE user_type=0 AND user=".$this->auth['id']." ORDER BY id DESC LIMIT 0,5";
+						$sql = "SELECT * FROM os_logs WHERE user_type=0 AND user=".$this->auth['id']." ORDER BY id DESC LIMIT 0,5";
 						$rst = $this->dbc->Query($sql);
 						while($log = $this->dbc->Fetch($rst)){
 							

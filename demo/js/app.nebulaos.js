@@ -151,7 +151,6 @@ var fn={
 	},
 	dialog : {
 		confirmbox : function(title,msg,func){
-		
 			bootbox.confirm({
 				title: '<h3 class="d-flex align-items-center"><i class="material-icons mr-1">report_problem</i>'+title+'</h3>',
 				message: msg,
@@ -195,6 +194,17 @@ var fn={
 					});
 					
 				}
+			});
+		},
+		open : function(url,selector){
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType: "html",
+				success: function(html){
+					$("body").append(html);
+					fn.ui.modal.setup({dialog_id : selector});
+				}	
 			});
 		}
 	},
@@ -405,17 +415,7 @@ var fn={
 		window.location = path;
 	},
 	reload : function(){
-		var app = $("body").data('current_page');
-		var path = 'apps/' + app + '/index.php';
-		if($("body").data('current_param') != ''){
-			path += '?' + param;
-		}
-		
-		fn.redraw = function(){};
-		$.post(path,function(html){
-			$(".page-container").html(html);
-			fn.redraw();
-		},"html");
+		window.location.reload();
 	},
 	change_language : function(lang){
 		$.post("ajax/action-change-language.php",{lang:lang},function(html){
@@ -442,7 +442,8 @@ var fn={
 				window.location.reload();
 			}else{
 				//alert(response.msg);
-				bootbox.alert(response.msg);
+				fn.notify.warnbox(response.msg);
+				//bootbox.alert(response.msg);
 				//Swal.fire("Access Denied",response.msg,"warning");
 			}
 		},"json");

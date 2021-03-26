@@ -1,0 +1,98 @@
+<?php
+	session_start();
+	@ini_set('display_errors',1);
+	include "../../config/define.php";
+	include "../../include/db.php";
+	include "../../include/oceanos.php";
+	include "../../include/iface.php";
+	
+	$dbc = new dbc;
+	$dbc->Connect();
+	$os = new oceanos($dbc);
+	//$os->initial_lang("lang");
+	$panel = new ipanel($dbc,$os->auth);
+	$ui_form = new iform($dbc,$os->auth);
+	
+	$rate_exchange = $os->load_variable("rate_exchange");
+	$rate_spot = $os->load_variable("rate_spot");
+	$rate_pmdc = $os->load_variable("rate_pmdc");
+	
+?>
+<div class="row gutters-sm">
+	<div class="col-xl-6 mb-3">
+		<div class="row gutters-sm">
+			<div class="col-xl-6 mb-3">
+				<?php include "view/card.order.add.php";?>
+			</div>
+			<div class="col-xl-6 mb-3">
+				<?php include "view/card.spot.php";?>
+			</div>
+			<div class="col-xl-12">
+				<?php include "view/card.customer.php";?>
+			</div>
+		</div>
+	</div>
+	<div class="col-xl-6">
+		<?php include "view/card.stock.php";?>
+		<?php include "view/card.quickorder.php";?>
+		<?php include "view/card.ordertable.php";?>
+	</div>
+</div>
+      <script>
+        var plugins = [
+			'apps/customer/include/interface.js',
+			'apps/sales/include/interface.js',
+			'apps/sales_screen/include/interface.js',
+			'plugins/datatables/dataTables.bootstrap4.min.css',
+			'plugins/datatables/responsive.bootstrap4.min.css',
+			'plugins/datatables/jquery.dataTables.bootstrap4.responsive.min.js',
+			'plugins/chart.js/Chart.min.js',
+			'plugins/jquery-sparkline/jquery.sparkline.min.js',
+			'plugins/select2/js/select2.full.min.js',
+			'plugins/select2/css/select2.min.css',
+			'plugins/moment/moment.min.js'
+        ]
+		
+	
+        App.loadPlugins(plugins, null).then(() => {
+			/*
+			$('.datatable').DataTable({
+				"dom": '<"toolbar">rtp',
+				"pageLength": 5
+			});
+			*/
+			
+			$('.select2').select2();
+			<?php
+			
+			include "../customer/control/controller.customer.edit.js";
+			include "control/controller.sales_screen.js";
+			include "control/controller.order.view.js";
+			include "control/controller.order.add.js";
+			
+			
+			
+			include "control/controller.quickorder.view.js";
+			
+			
+			
+			include "../sales/control/controller.order.view.js";
+			if($os->allow("sales","add"))include "../sales/control/controller.order.add.js";
+			if($os->allow("sales","edit"))include "../sales/control/controller.order.edit.js";
+			if($os->allow("sales","remove"))include "../sales/control/controller.order.remove.js";
+			if($os->allow("sales","split"))include "../sales/control/controller.order.split.js";
+			if($os->allow("sales","postpone"))include "../sales/control/controller.order.postpone.js";
+			if($os->allow("sales","lock"))include "../sales/control/controller.order.lock.js";
+			if($os->allow("sales","print"))include "../sales/control/controller.order.print.js";
+			if($os->allow("sales","edit"))include "../sales/control/controller.order.add_delivery.js";
+			
+			include "../sales/control/controller.quick_order.view.js";
+			if($os->allow("sales","add"))include "../sales/control/controller.quick_order.add.js";
+			if($os->allow("sales","edit"))include "../sales/control/controller.quick_order.edit.js";
+			if($os->allow("sales","remove"))include "../sales/control/controller.quick_order.remove.js";
+			if($os->allow("sales","transform"))include "../sales/control/controller.quick_order.transform.js";
+			
+			
+			?>
+        }).then(() => App.stopLoading())
+      </script>

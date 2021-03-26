@@ -6,6 +6,31 @@
 		"icon" : "trello",
 		"path" : "apps/dashboard/index.php"
 	},{
+		"appname" : "datapanel",
+		"name" : "Data Panel",
+		"icon_type" : "feather",
+		"icon" : "trello",
+		"path" : "apps/datapanel/index.php"
+	},{
+		"appname" : "core",
+		"name" : "Master",
+		"icon" : "far fa-money-bill-alt",
+		"submenu" : [
+			{
+				"appname" : "sales",
+				"name" : "งานขาย",
+				"icon_type" : "feather",
+				"icon" : "monitor",
+				"path" : "apps/sales/index.php"
+			},{
+				"appname" : "purchase",
+				"name" : "งานซื้อ",
+				"icon_type" : "feather",
+				"icon" : "monitor",
+				"path" : "apps/purchase/index.php"
+			}
+		]
+	},{
 		"appname" : "sales",
 		"name" : "ข้อมูลการขาย",
 		"icon" : "far fa-money-bill-alt",
@@ -17,11 +42,11 @@
 				"icon" : "monitor",
 				"path" : "apps/sales_screen/index.php"
 			},{
-				"appname" : "schedule_send_silver",
+				"appname" : "schedule",
 				"name" : "Schedule",
 				"icon_type" : "feather",
 				"icon" : "calendar",
-				"path" : "apps/schedule_send_silver/index.php"
+				"path" : "apps/schedule/index.php"
 			},{
 				"appname" : "sales_overview",
 				"name" : "ภาพรวมการขาย",
@@ -29,11 +54,17 @@
 				"icon" : "trello",
 				"path" : "apps/sales_overview/index.php"
 			},{
-				"appname" : "prepare_delivery",
+				"appname" : "prepare",
 				"name" : "เตรียมส่งของ",
 				"icon_type" : "feather",
 				"icon" : "shopping-cart",
-				"path" : "apps/prepare_delivery/index.php"
+				"path" : "apps/prepare/index.php"
+			},{
+				"appname" : "pack_prepare",
+				"name" : "สรุปการแบ่งแพ็ค",
+				"icon_type" : "feather",
+				"icon" : "shopping-cart",
+				"path" : "apps/pack_prepare/index.php"
 			}
 		]
 	},{
@@ -73,12 +104,12 @@
 				"path" : "apps/usd_change/index.php"
 			},{
 				"appname" : "sales_spot",
-				"name" : "Sales spot",
+				"name" : "Sales Spot",
 				"icon" : "far fa-cube",
 				"path" : "apps/sales_spot/index.php"
 			},{
 				"appname" : "trade_spot",
-				"name" : "Trade spot",
+				"name" : "Trade Spot",
 				"icon_type" : "feather",
 				"icon" : "layers",
 				"path" : "apps/trade_spot/index.php"
@@ -150,11 +181,6 @@
 				"name" : "Trust Receipt",
 				"icon" : "far fa-folder-open",
 				"path" : "apps/trust_receipt/index.php"
-			},{
-				"appname" : "premium_report",
-				"name" : "Premium Report",
-				"icon" : "far fa-chart-line",
-				"path" : "apps/report_premium/index.php"
 			}
 		]
 	},{
@@ -174,11 +200,6 @@
 				"name" : "Supplier",
 				"icon" : "far fa-users",
 				"path" : "apps/supplier/index.php"
-			},{
-				"appname" : "bank",
-				"name" : "Bank",
-				"icon" : "far fa-newspaper",
-				"path" : "apps/bank/index.php"
 			},{
 				"appname" : "employee",
 				"name" : "Employee",
@@ -269,6 +290,12 @@
 				"icon_type" : "feather",
 				"icon" : "database",
 				"path" : "apps/database/index.php"
+			},{
+				"appname" : "zystem",
+				"name" : "Zystem",
+				"icon_type" : "feather",
+				"icon" : "settings",
+				"path" : "apps/zystem/index.php"
 			}
 		]
 	}

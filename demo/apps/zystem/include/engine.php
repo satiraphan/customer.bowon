@@ -263,7 +263,7 @@ class engine{
 			$s .= '		class_name : "btn btn-light has-icon",'."\n";
 			$s .= '		icon_type : "material",'."\n";
 			$s .= '		icon : "delete",'."\n";
-			$s .= '		onclick : "fn.app.'.$this->param['appname'].'.'.$subapp.'.remove()",'."\n";
+			$s .= '		onclick : "fn.app.'.$this->param['appname'].'.'.$subapp.'.dialog_remove()",'."\n";
 			$s .= '		caption : "Remove"'."\n";
 			$s .= '	}));'."\n";
 			fwrite($file, $s);
@@ -416,7 +416,7 @@ class engine{
 			$s .= '	$modal->setExtraClass("modal-lg");'."\n";
 			$s .= '	$modal->setButton(array('."\n";
 			$s .= '		array("close","btn-secondary","Dismiss"),'."\n";
-			$s .= '		array("action","btn-default","Save Change","fn.app.'.$this->param['appname'].'.'.$subapp.'.edit()")'."\n";
+			$s .= '		array("action","btn-outline-dark","Save Change","fn.app.'.$this->param['appname'].'.'.$subapp.'.edit()")'."\n";
 			$s .= '	));'."\n";
 			$s .= '	$modal->SetVariable(array('."\n";
 			$s .= '		array("id",$'.$subapp.'[\'id\'])'."\n";
