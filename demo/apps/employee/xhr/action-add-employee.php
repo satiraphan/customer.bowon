@@ -25,11 +25,16 @@
 			'#updated' => 'NOW()',
 			'nickname' => $_POST['nickname'],
 			'signature' => '',
-			'dob' => $_POST['dob'],
 			'#status' => 1,
 			'#user' => $_POST['user'],
 			'#department' => $_POST['department']
 		);
+		
+		if($_POST['dob']!=""){
+			$data['dob'] = $_POST['dob'];
+		}else{
+			$data['#dob'] = "NULL";
+		}
 
 		if($dbc->Insert("bs_employees",$data)){
 			$employee_id = $dbc->GetID();

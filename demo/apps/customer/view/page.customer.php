@@ -5,6 +5,10 @@
 				<span type="checkall" control="chk_customer" class="far fa-lg fa-square"></span>
 			</th>
 			<th class="text-center">Name</th>
+			<th class="text-center">Contact</th>
+			<th class="text-center">Phone</th>
+			<th class="text-center">Email</th>
+			<th class="text-center">Remark</th>
 			<th class="text-center">Action</th>
 		</tr>
 	</thead>

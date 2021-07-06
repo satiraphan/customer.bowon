@@ -19,26 +19,25 @@
 	}else{
 		$data = array(
 			'name' => addslashes($_POST['name']),
+			"#gid" => $_POST['gid'],
+			"contact" => $_POST['contact'],
+			"phone" => $_POST['phone'],
+			"fax" => $_POST['fax'],
+			"email" => $_POST['email'],
 			'shipping_address' => addslashes($_POST['shipping_address']),
 			'billing_address' => addslashes($_POST['billing_address']),
-			'gid' => $_POST['gid'],
-			'contact' => $_POST['contact'],
-			'email' => $_POST['email'],
-			'fax' => $_POST['fax'],
-			'phone' => $_POST['phone'],
-			'#sales' => $_POST['sales'],
-			'info_need' => addslashes($_POST['info_need']),
-			'info_require' => addslashes($_POST['info_require']),
-			'info_memo' => addslashes($_POST['info_memo']),
-			'info_working_hours' => addslashes($_POST['info_working_hours']),
-			'info_comment' => addslashes($_POST['info_comment']),
-			'info_reference' => addslashes($_POST['info_reference']),
-			'info_competitor' => addslashes($_POST['info_competitor']),
-			'info_purchase' => addslashes($_POST['info_purchase']),
-			'default_payment' => $_POST['default_payment'],
-			'default_bank' => $_POST['default_bank'],
-			'default_vat' => $_POST['default_vat'],
-			'#updated' => 'NOW()'
+			"remark" => addslashes($_POST['remark']),
+			"comment" => addslashes($_POST['comment']),
+			"#default_sales" => $_POST['default_sales'],
+			"default_payment" => $_POST['default_payment'],
+			"default_bank" => $_POST['default_bank'],
+			"default_vat_type" => $_POST['default_vat_type'],
+			"default_pack" => $_POST['default_pack'],
+			'#updated' => 'NOW()',
+			"org_name" => addslashes($_POST['org_name']),
+			"org_taxid" => $_POST['org_taxid'],
+			"org_branch" => $_POST['org_branch'],
+			"org_address" => addslashes($_POST['billing_address'])
 		);
 
 		if($dbc->Update("bs_customers",$data,"id=".$_POST['id'])){

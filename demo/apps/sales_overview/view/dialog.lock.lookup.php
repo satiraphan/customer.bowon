@@ -20,7 +20,7 @@
 			$demo = new demo;
 			?>
 				<div class="text-center">
-					<h3>Lock Report</h3>
+					<h3>Lock Report(ที่ยังไม่ได้กำหนดวันจัดส่ง)</h3>
 					<p>12/11/2020</p>
 				</div>
 				

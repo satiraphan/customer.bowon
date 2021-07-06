@@ -44,7 +44,7 @@
 	<?php
 		switch($panel->getView()){
 			case "data":
-				include "../purchase/control/controller.usd.view.js";
+				include "control/controller.data.view.js";
 				if($os->allow("usd_change","add"))include "../purchase/control/controller.usd.add.js";
 				if($os->allow("usd_change","edit"))include "../purchase/control/controller.usd.edit.js";
 				if($os->allow("usd_change","remove"))include "../purchase/control/controller.usd.remove.js";

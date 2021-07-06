@@ -36,7 +36,8 @@
 		'plugins/datatables/jquery.dataTables.bootstrap4.responsive.min.js',
 		'plugins/select2/css/select2.min.css',
 		'plugins/select2/js/select2.min.js',
-		'plugins/moment/moment.min.js'
+		'plugins/moment/moment.min.js',
+		'plugins/jquery-ui-1.12.1.custom/jquery-ui.js'
 	];
 	App.loadPlugins(plugins, null).then(() => {
 		App.checkAll()
@@ -53,6 +54,7 @@
 				if($os->allow("customer","remove"))include "control/controller.customer.remove.js";
 				if($os->allow("customer","add"))include "control/controller.customer.add.js";
 				if($os->allow("customer","edit"))include "control/controller.customer.edit.js";
+				if($os->allow("customer","edit"))include "control/controller.customer.upload.js";
 				break;
 		}
 	?>

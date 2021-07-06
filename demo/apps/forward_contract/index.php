@@ -5,51 +5,62 @@
 	include "../../include/db.php";
 	include "../../include/oceanos.php";
 	include "../../include/iface.php";
-
+	
 	$dbc = new dbc;
 	$dbc->Connect();
 	$os = new oceanos($dbc);
+	//$os->initial_lang("lang");
 	$panel = new ipanel($dbc,$os->auth);
-
-	$panel->setApp("forward_contract","ForwardContract");
-	$panel->setView(isset($_GET['view'])?$_GET['view']:'contract');
-
-	$panel->setMeta(array(
-		array("contract","Contract","far fa-user"),
-	));
+	$ui_form = new iform($dbc,$os->auth);
+	
+	$rate_exchange = $os->load_variable("rate_exchange");
+	$rate_spot = $os->load_variable("rate_spot");
+	$rate_pmdc = $os->load_variable("rate_pmdc");
+	
 ?>
-<?php
-	$panel->PageBreadcrumb();
-?>
-<div class="row">
+<div class="row gutters-sm">
+	<div class="col-xl-12 mb-3">
+		<div class="row gutters-sm">
+			<div class="col-xl-6 mb-3">
+				<?php include "view/card.usd.add.php";?>
+			</div>
+			<div class="col-xl-6 mb-3">
+				<?php include "view/card.reserve.php";?>
+			</div>
+		</div>
+	</div>
 	<div class="col-xl-12">
-	<?php
-		$panel->EchoInterface();
-	?>
+		<?php include "view/card.spot.php";?>
 	</div>
 </div>
-<script>
-	var plugins = [
-		'apps/forward_contract/include/interface.js',
-		'plugins/datatables/dataTables.bootstrap4.min.css',
-		'plugins/datatables/responsive.bootstrap4.min.css',
-		'plugins/datatables/jquery.dataTables.bootstrap4.responsive.min.js',
-		'plugins/select2/css/select2.min.css',
-		'plugins/select2/js/select2.min.js',
-		'plugins/moment/moment.min.js'
-	];
-	App.loadPlugins(plugins, null).then(() => {
-		App.checkAll()
-	<?php
-		switch($panel->getView()){
-			case "contract":
-				include "control/controller.contract.view.js";
-				if($os->allow("forward_contract","add"))include "control/controller.contract.add.js";
-				if($os->allow("forward_contract","edit"))include "control/controller.contract.edit.js";
-				if($os->allow("forward_contract","remove"))include "control/controller.contract.remove.js";
-				if($os->allow("forward_contract","split"))include "control/controller.contract.split.js";
-				break;
-}
-	?>
-	}).then(() => App.stopLoading())
-</script>
+      <script>
+        var plugins = [
+			'apps/import/include/interface.js',
+			'apps/customer/include/interface.js',
+			'apps/purchase/include/interface.js',
+			'apps/sales_screen/include/interface.js',
+			'plugins/datatables/dataTables.bootstrap4.min.css',
+			'plugins/datatables/responsive.bootstrap4.min.css',
+			'plugins/datatables/jquery.dataTables.bootstrap4.responsive.min.js',
+			'plugins/chart.js/Chart.min.js',
+			'plugins/jquery-sparkline/jquery.sparkline.min.js',
+			'plugins/select2/js/select2.full.min.js',
+			'plugins/select2/css/select2.min.css',
+			'plugins/moment/moment.min.js'
+        ]
+		
+	
+        App.loadPlugins(plugins, null).then(() => {
+			
+			<?php
+			//include "control/controller.import.view.js";
+			//include "control/controller.spot.view.js";
+			
+			//if($os->allow("forward_contract","add"))include "control/controller.import.add.js";
+			//if($os->allow("forward_contract","edit"))include "control/controller.import.edit.js";
+			//if($os->allow("forward_contract","remove"))include "control/controller.import.remove.js";
+			
+			
+			?>
+        }).then(() => App.stopLoading())
+      </script>

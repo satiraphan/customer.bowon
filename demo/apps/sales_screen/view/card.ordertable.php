@@ -1,6 +1,6 @@
 <div class="card">
 	<div class="card-header border-0">
-		<h6>ประวัติการซื้อ <button class="btn btn-sm btn-primary" onclick="fn.dialog.open('apps/sales_screen/view/dialog.purchase.lookup.php','#dialog_purchase_lookup')">ดูรายการ</button></h6>
+		<h6>ประวัติการซื้อ </h6>
 	</div>
 	<div class="card-body">
 		<table id="tblDailyTable" class="datatable table table-striped table-sm table-bordered dt-responsive nowrap">
@@ -15,6 +15,12 @@
 				</tr>
 			</thead>
 			<tbody>
+			</tbody>
+			<tbody>
+				<tr>
+					<th class="text-right" colspan="3">ยอดรวม</th>
+					<th class="text-center" colspan="3" xname="tAmount"></th>
+				</tr>
 			</tbody>
 		</table>
 	</div>

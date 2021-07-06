@@ -1,11 +1,21 @@
-
-	$('#tblDailyTable').DataTable({
+$('#tblDailyTable').DataTable({
 		responsive: true,
 		"bStateSave": true,
 		"autoWidth" : true,
 		"processing": true,
 		"serverSide": true,
-		"ajax": "apps/sales_screen/store/store-order.php",
+		//"ajax": "apps/sales_screen/store/store-order.php",
+		"ajax" : {
+			data : function(d){
+				var customer_id = $("form[name=order] select[name=customer_id]").val();
+				if(customer_id != ""){
+					d.customer_id = customer_id
+				}else{
+					d.customer_id = "NULL"
+				}
+			},
+			url : "apps/sales/store/store-order.php",	
+		},
 		"aoColumns": [
 			{"bSortable":true	,"data":"code"		,"sClass":"hidden-xs text-center",	"sWidth": "20px"  },
 			{"bSortable":true	,"data":"created"	,class:"text-center"	},
@@ -25,6 +35,17 @@
 			
 			
 			
-		}
-	});
+		},
+		"footerCallback": function (row,data,start,end,display) {
+			var api = this.api(),data;
+			
+			var tAmount = 0,tValue = 0;
+			for(i in data){
+				tAmount += parseFloat(data[i].amount);
+				tValue += (parseFloat(data[i].amount)*parseFloat(data[i].price));
+			}
 
+			$("#tblDailyTable [xname=tAmount]").html(fn.ui.numberic.format(tAmount));
+			
+        }
+	});

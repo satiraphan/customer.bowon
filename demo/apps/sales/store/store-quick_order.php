@@ -16,9 +16,9 @@
 		"customer_id" => "bs_quick_orders.customer_id",
 		"customer_name" => "bs_customers.name",
 		"amount" => "bs_quick_orders.amount",
-		"price" => "bs_quick_orders.price",
-		"rate_spot" => "bs_quick_orders.rate_spot",
-		"rate_exchange" => "bs_quick_orders.rate_exchange",
+		"price" => "FORMAT(bs_quick_orders.price,2)",
+		"rate_spot" => "FORMAT(bs_quick_orders.rate_spot,2)",
+		"rate_exchange" => "FORMAT(bs_quick_orders.rate_exchange,2)",
 		"remark" => "bs_quick_orders.remark",
 		"status" => "bs_quick_orders.status",
 		"order_id" => "bs_quick_orders.order_id",
@@ -34,7 +34,8 @@
 				"table" => "bs_customers",
 				"with" => "id"
 			)
-		)
+		),
+		"where" => "DATE(bs_quick_orders.created) LIKE '".date("Y-m-d")."'"
 	);
 
 	$dbc->SetParam($table,$columns,$_GET['order'],$_GET['columns'],$_GET['search']);

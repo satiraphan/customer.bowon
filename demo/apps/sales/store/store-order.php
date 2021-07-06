@@ -24,7 +24,7 @@
 		"amount" => "FORMAT(bs_orders.amount,2)",
 		"price" => "FORMAT(bs_orders.price,2)",
 		"vat_type" => "bs_orders.vat_type",
-		"vat_amount" => "FORMAT(bs_orders.vat_amount,2)",
+		"vat" => "FORMAT(bs_orders.vat,2)",
 		"total" => "FORMAT(bs_orders.total,2)",
 		"net" => "FORMAT(bs_orders.net,2)",
 		"delivery_date" => "bs_orders.delivery_date",
@@ -81,7 +81,7 @@
 				"with" => "id"
 			)
 		),
-		"where" => "bs_orders.status != 0".$where
+		"where" => "bs_orders.status > 0".$where
 	);
 
 	$dbc->SetParam($table,$columns,$_GET['order'],$_GET['columns'],$_GET['search']);

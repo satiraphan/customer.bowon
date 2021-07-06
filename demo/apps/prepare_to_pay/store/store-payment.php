@@ -18,15 +18,15 @@
 		"created" => "bs_deliveries.created",
 		"updated" => "bs_deliveries.updated",
 		"status" => "bs_deliveries.status",
-		"amount" => "FORMAT(bs_deliveries.amount,2)",
+		"amount" => "FORMAT(bs_deliveries.amount,4)",
 		"user" => "bs_deliveries.user",
 		"comment" => "bs_deliveries.comment",
 		"customer_name" => "bs_orders.customer_name",
 		"date" => "bs_orders.date",
 		"info_payment" => "bs_orders.info_payment",
-		"vat_amount" => "FORMAT(bs_orders.vat_amount,2)",
-		"total" => "FORMAT(bs_orders.total,2)",
-		"net" => "FORMAT(bs_orders.net,2)"
+		"vat_amount" => "FORMAT(bs_orders.vat,4)",
+		"total" => "FORMAT(bs_orders.total,4)",
+		"net" => "FORMAT(bs_orders.net,4)"
 	);
 
 	$where = '';

@@ -21,10 +21,15 @@
 			'fullname' => $_POST['fullname'],
 			'#updated' => 'NOW()',
 			'nickname' => $_POST['nickname'],
-			'dob' => $_POST['dob'],
 			'#user' => $_POST['user'],
 			'#department' => $_POST['department']
 		);
+		
+		if($_POST['dob']!=""){
+			$data['dob'] = $_POST['dob'];
+		}else{
+			$data['#dob'] = "NULL";
+		}
 
 		if($dbc->Update("bs_employees",$data,"id=".$_POST['id'])){
 			echo json_encode(array(

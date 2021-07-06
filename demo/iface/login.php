@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="plugins/simplebar/simplebar.min.css">
 	<link rel="stylesheet" href="css/style.min.css" id="main-css">
 	<link rel="stylesheet" href="css/sidebar-gray.min.css" id="theme-css"> <!-- options: blue,cyan,dark,gray,green,pink,purple,red,royal,ash,crimson,namn,frost -->
-	<title>Nebulaos Admin</title>
+	<title>Bowin Silver System</title>
 </head>
 
 <body class="login-page">
@@ -19,8 +19,8 @@
 			<div class="col-md-auto d-flex justify-content-center">
 				<div class="card shadow">
 					<div class="card-header bg-primary text-white flex-column">
-						<h4 class="text-center mb-0">Log In</h4>
-						<div class="text-center opacity-50 font-italic">Nebula Operation System</div>
+						<h4 class="text-center mb-0">เข้าสู่ระบบ</h4>
+						<div class="text-center opacity-50 font-italic">Bowin Silver</div>
 					</div>
 					<div class="card-body p-4">
 

@@ -1,11 +1,10 @@
-	
-	$('#tblQuickOrder').DataTable({
+$('#tblQuickOrder').DataTable({
 		responsive: true,
 		"bStateSave": true,
 		"autoWidth" : true,
 		"processing": true,
 		"serverSide": true,
-		"ajax": "apps/sales/store/store-quick_order.php",
+		"ajax": "apps/sales_screen/store/store-quick_order.php",
 		"aoColumns": [
 			{"bSortable":true	,"data":"created"	,class:"text-center"	},
 			{"bSortable":true	,"data":"customer_name"		,class:"text-center"	},
@@ -15,6 +14,7 @@
 			{"bSortable":true	,"data":"rate_spot"		,class:"text-center"	},
 			{"bSortable":true	,"data":"rate_exchange"	,class:"text-center"	},
 			{"bSortable":true	,"data":"remark"	,class:"text-center"	},
+			{"bSortable":true	,"data":"sales"	,class:"text-center"	},
 		],"order": [[ 0, "desc" ]],
 		"createdRow": function ( row, data, index ) {
 			$('td', row).eq(0).html(moment(data.created).format("DD/MM/YYYY HH:mm:ss"));
@@ -30,6 +30,18 @@
 			}else{
 				$('td', row).eq(4).html('<span class="badge badge-dark">created</span>');
 			}
-		}
-	});
+		},
+		"footerCallback": function (row,data,start,end,display) {
+			var api = this.api(),data;
+			
+			var tAmount = 0,tValue = 0;
+			for(i in data){
+				tAmount += parseFloat(data[i].amount);
+				tValue += (parseFloat(data[i].amount)*parseFloat(data[i].price));
+			}
 
+			$("#tblQuickOrder [xname=tAmount]").html(fn.ui.numberic.format(tAmount,4));
+			$("#tblQuickOrder [xname=tValue]").html(fn.ui.numberic.format(tValue,4));
+			
+        }
+	});

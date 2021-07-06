@@ -5,7 +5,9 @@
 				<span type="checkall" control="chk_usd" class="far fa-lg fa-square"></span>
 			</th>
 			<th class="text-center">Confirm</th>
-			<th class="text-center">Date</th>
+			<th class="text-center">Purchase</th>
+			<th class="text-center">Start Date</th>
+			<th class="text-center">Duedate</th>
 			<th class="text-center">Amount</th>
 			<th class="text-center">Exchange</th>
 			<th class="text-center">Type</th>

@@ -67,16 +67,10 @@
 			
 			include "../customer/control/controller.customer.edit.js";
 			include "control/controller.sales_screen.js";
-			include "control/controller.order.view.js";
 			include "control/controller.order.add.js";
 			
 			
-			
-			include "control/controller.quickorder.view.js";
-			
-			
-			
-			include "../sales/control/controller.order.view.js";
+			include "control/controller.order.view.js";
 			if($os->allow("sales","add"))include "../sales/control/controller.order.add.js";
 			if($os->allow("sales","edit"))include "../sales/control/controller.order.edit.js";
 			if($os->allow("sales","remove"))include "../sales/control/controller.order.remove.js";
@@ -86,7 +80,7 @@
 			if($os->allow("sales","print"))include "../sales/control/controller.order.print.js";
 			if($os->allow("sales","edit"))include "../sales/control/controller.order.add_delivery.js";
 			
-			include "../sales/control/controller.quick_order.view.js";
+			include "control/controller.quickorder.view.js";
 			if($os->allow("sales","add"))include "../sales/control/controller.quick_order.add.js";
 			if($os->allow("sales","edit"))include "../sales/control/controller.quick_order.edit.js";
 			if($os->allow("sales","remove"))include "../sales/control/controller.quick_order.remove.js";

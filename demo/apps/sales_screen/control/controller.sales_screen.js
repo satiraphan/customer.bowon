@@ -10,6 +10,7 @@
 		$("form[name=order] input[name=net]").val(net);
 	});
 	
+	//ทำรายการตอนเปลี่ยน Customer ID
 	$("form[name=order] select[name=customer_id]").change(function(){
 		let customer_id = $(this).val();
 		if(customer_id != ""){
@@ -17,18 +18,31 @@
 				for(i in customer){
 					$("form[name=customer] input[name="+i+"]").val(customer[i]);
 					$("form[name=customer] textarea[name="+i+"]").val(customer[i]);
+					$("form[name=customer] select[name="+i+"]").val(customer[i]);
 				};
 				$("form[name=order] input[name=contact]").val(customer['contact']);
+				$("form[name=order] select[name=vat_type]").val(customer['default_vat_type']);
 				
-				if(customer['info_memo']!=""){
-					$("#info_memo").html('<div class="alert alert-danger" role="alert"><strong>ตำเตือน</strong> '+customer['info_memo']+'</div>');
+				if(customer['default_vat_type']!=null){						
+					$("form[name=order] select[name=vat_type]").val(customer['default_vat_type']);
+				}else{
+					$("form[name=order] select[name=vat_type]").val(0);
+				}
+				
+				
+				
+				
+				if(customer['remark']!=""){
+					$("#info_memo").html('<div class="alert alert-danger" role="alert"><strong>ตำเตือน</strong> '+customer['remark']+'</div>');
 				}else{
 					$("#info_memo").html("");
 				}
+				
 			},"json");
 		}else{
 			$("form[name=customer] input").val("-");
 		}
+		$("#tblDailyTable").DataTable().draw();
 	});
 	
 	$("input[name=delivery_lock]").change(function(){
@@ -60,9 +74,23 @@
 		var price2 = total+20;
 		var price3 = total+40;
 		
-		$('form[name=rate] input[name=price1]').val(price1.toFixed(2));
-		$('form[name=rate] input[name=price2]').val(price2.toFixed(2));
-		$('form[name=rate] input[name=price3]').val(price3.toFixed(2));
+		$('form[name=rate] input[name=price1]').val(fn.ui.numberic.format(price1,2));
+		$('form[name=rate] input[name=price2]').val(fn.ui.numberic.format(price2,2));
+		$('form[name=rate] input[name=price3]').val(fn.ui.numberic.format(price3,2));
 	};
 
 	fn.app.sales_screen.recalcuate();
+	
+	$("form[name=form_addquick_order] select[name=customer_id]").change(function(){
+		let customer_id = $(this).val();
+		if(customer_id != ""){
+			$.post('apps/sales_screen/xhr/action-load-customer.php',{id:customer_id},function(customer){
+				if(customer['default_vat_type']!=null){
+					$("form[name=form_addquick_order] select[name=vat_type]").val(customer['default_vat_type']);
+				}else{
+					$("form[name=form_addquick_order] select[name=vat_type]").val(0);
+				}
+			},"json");
+		}
+	});
+				

@@ -1,53 +1,54 @@
 <?php
 	session_start();
-	ini_set('display_errors',1);
 	include_once "../../../config/define.php";
 	include_once "../../../include/db.php";
 	include_once "../../../include/datastore.php";
-	
+
 	date_default_timezone_set(DEFAULT_TIMEZONE);
-	
+
 	$dbc = new datastore;
 	$dbc->Connect();
-	
+
 	$columns = array(
 		"id" => "bs_quick_orders.id",
-		"customer_id" => "bs_quick_orders.customer_id",
-		"customer_name" => "bs_customers.name",
-		"amount" => "FORMAT(bs_quick_orders.amount,2)",
-		"price" => "FORMAT(bs_quick_orders.price,2)",
-		"spot" => "FORMAT(bs_quick_orders.spot,2)",
-		"exchange" => "FORMAT(bs_quick_orders.exchange,2)",
-		"status" => "bs_quick_orders.status",
 		"created" => "bs_quick_orders.created",
 		"updated" => "bs_quick_orders.updated",
-		"remark" => "bs_quick_orders.remark"
+		"customer_id" => "bs_quick_orders.customer_id",
+		"customer_name" => "bs_customers.name",
+		"sales" => "bs_employees.fullname",
+		"amount" => "bs_quick_orders.amount",
+		"price" => "FORMAT(bs_quick_orders.price,2)",
+		"rate_spot" => "FORMAT(bs_quick_orders.rate_spot,2)",
+		"rate_exchange" => "FORMAT(bs_quick_orders.rate_exchange,2)",
+		"remark" => "bs_quick_orders.remark",
+		"status" => "bs_quick_orders.status",
+		"order_id" => "bs_quick_orders.order_id",
+		"vat_type" => "bs_quick_orders.vat_type"
 	);
-	
+
 	$table = array(
 		"index" => "id",
 		"name" => "bs_quick_orders",
 		"join" => array(
 			array(
-				"field" => "sales",
-				"table" => "bs_employees",
-				"with" => "id"
-			),array(
 				"field" => "customer_id",
 				"table" => "bs_customers",
 				"with" => "id"
+			),array(
+				"join" => "bs_customers",
+				"field" => "default_sales",
+				"table" => "bs_employees",
+				"with" => "id"
 			)
-		)
+		),
+		"where" => "DATE(bs_quick_orders.created) LIKE '".date("Y-m-d")."'"
 	);
-	
+
 	$dbc->SetParam($table,$columns,$_GET['order'],$_GET['columns'],$_GET['search']);
 	$dbc->SetLimit($_GET['length'],$_GET['start']);
 	$dbc->Processing();
 	echo json_encode($dbc->GetResult());
-	
+
 	$dbc->Close();
 
 ?>
-
-
-

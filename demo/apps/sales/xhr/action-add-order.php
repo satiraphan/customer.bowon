@@ -31,18 +31,20 @@
 		$customer = $dbc->GetRecord("bs_customers","*","id=".$_POST['customer_id']);
 		$total = $_POST['amount']*$_POST['price'];
 		if($_POST['vat_type']=="2"){
-			$vat = $_POST['price']*0.07;
+			$vat = $total*0.07;
 		}else{
 			$vat = 0;
 		}
 		$net = $total+$vat;
+		
+
 		
 		$data = array(
 			'#id' => "DEFAULT",
 			"#customer_id" => $_POST['customer_id'],
 			"customer_name" => $customer['name'],
 			"date" => $_POST['date'],
-			"#sales" => isset($_POST['sales'])?$_POST['sales']:(is_null($customer['sales'])?"NULL":$customer['sales']),
+			"#sales" => isset($_POST['sales'])?$_POST['sales']:(is_null($customer['default_sales'])?"NULL":$customer['default_sales']),
 			"#user" => $os->auth['id'],
 			'#type' => 1,
 			"#parent" => 'NULL',
@@ -51,7 +53,7 @@
 			'#amount' => $_POST['amount'],
 			'#price' => $_POST['price'],
 			'#vat_type' => $_POST['vat_type'],
-			'#vat_amount' => $vat,
+			'#vat' => $vat,
 			'#total' => $total,
 			'#net' => $net,
 			'delivery_time' => $_POST['delivery_time'],

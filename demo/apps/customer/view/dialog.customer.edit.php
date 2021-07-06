@@ -21,12 +21,11 @@
 	$modal->setExtraClass("modal-lg");
 	$modal->setButton(array(
 		array("close","btn-secondary","Dismiss"),
-		array("action","btn-default","Save Change","fn.app.customer.customer.edit()")
+		array("action","btn-danger","Save Change","fn.app.customer.customer.edit()")
 	));
 	$modal->SetVariable(array(
 		array("id",$customer['id'])
 	));
-
 	
 	$blueprint = array(
 		array(
@@ -100,11 +99,78 @@
 							)
 						),array(
 							array(
+								"name" => "org_name",
+								"caption" => "ชื่อบริษัท",
+								"placeholder" => "Organization Name",
+								"value" => $customer['org_name']
+							)
+						),array(
+							array(
+								"name" => "org_taxid",
+								"caption" => "หมายเลขผู้เสียภาษี",
+								"flex-label" => 3,
+								"flex" => 4,
+								"placeholder" => "",
+								"value" => $customer['org_taxid']
+							),array(
+								"name" => "org_branch",
+								"caption" => "สาขา",
+								"flex-label" => 1,
+								"flex" => 4,
+								"placeholder" => "ระบุสาขา",
+								"value" => $customer['org_branch']
+							)
+						),array(
+							array(
 								"name" => "billing_address",
 								"type" => "textarea",
+								"flex-label" => 3,
+								"flex" => 9,
 								"caption" => "ที่อยู่ใบกำกับภาษี",
 								"placeholder" => "Address",
 								"value" => $customer['billing_address']
+							)
+						)
+					)
+				),
+				array(
+					"type" => "tab",
+					"group" => "group_b",
+					"name" => "รายละเอียด",
+					"items" => array(
+						array(
+							array(
+								"name" => "remark",
+								"caption" => "Remark",
+								"type" => "textarea",
+								"placeholder" => "",
+								"value" => $customer['remark']
+							)
+						),
+						array(
+							array(
+								"name" => "comment",
+								"caption" => "Comment",
+								"type" => "textarea",
+								"placeholder" => "",
+								"value" => $customer['comment']
+							)
+						),
+						array(
+							array(
+								"type" => "comboboxdb",
+								"name" => "default_sales",
+								"caption" => "Sale",
+								"source" => array(
+									"table" => "bs_employees",
+									"name" => "fullname",
+									"value" => "id"
+								),
+								"default" => array(
+									"value" => "NULL",
+									"name" => "Not Selected"
+								),
+								"value" => $customer['default_sales']
 							)
 						),array(
 							array(
@@ -121,26 +187,27 @@
 								"value" => $customer['default_bank']
 							),array(
 								"type" => "combobox",
-								"name" => "default_vat",
+								"name" => "default_vat_type",
 								"flex" => 2,
 								"value" => "0%",
 								"source" => array(
-									"0%",
-									"7%"
+									array(0,"0%"),
+									array(2,"7%")
 								),
 								"caption" => "ภาษีมูลค่าเพิ่ม",
-								"value" => $customer['default_vat']
+								"value" => $customer['default_vat_type']
 							)
 						),array(
 							array(
 								"type" => "comboboxdatabank",
 								"source" => "db_payment",
 								"name" => "default_payment",
-								"caption" => "การจ่ายเงิน",
+								"caption" => "เงือนไขการชำระเงิน",
 								"default" => array(
 									"value" => "none",
 									"name" => "ไม่ระบุ"
 								),
+								"flex-label" => 3,
 								"flex" => 6,
 								"value" => $customer['default_payment']
 							)
@@ -149,95 +216,17 @@
 				),
 				array(
 					"type" => "tab",
-					"group" => "group_b",
-					"name" => "รายละเอียด",
+					"group" => "group_c",
+					"name" => "ข้อมูลการแบ่ง Pack",
 					"items" => array(
-						
 						array(
 							array(
-								"name" => "info_need",
-								"caption" => "Need",
+								"name" => "default_pack",
+								"caption" => "Default Pack",
 								"type" => "textarea",
-								"flex" => 4,
+								"rows" => 10,
 								"placeholder" => "",
-								"value" => $customer['info_need']
-							),
-							array(
-								"name" => "info_memo",
-								"caption" => "บันทึก",
-								"type" => "textarea",
-								"flex" => 4,
-								"placeholder" => "",
-								"value" => $customer['info_memo']
-							)
-						),
-						array(
-							array(
-								"name" => "info_comment",
-								"caption" => "Comment",
-								"type" => "textarea",
-								"flex" => 4,
-								"placeholder" => "",
-								"value" => $customer['info_comment']
-							),
-							array(
-								"name" => "info_reference",
-								"caption" => "แนะนำจาก",
-								"type" => "textarea",
-								"flex" => 4,
-								"placeholder" => "",
-								"value" => $customer['info_reference']
-							)
-						),
-						array(
-							array(
-								"name" => "info_require",
-								"caption" => "REQUIRE ",
-								"type" => "textarea",
-								"flex" => 4,
-								"placeholder" => "",
-								"value" => $customer['info_require']
-							),
-							array(
-								"name" => "info_working_hours",
-								"caption" => "WORKING HOUR",
-								"type" => "textarea",
-								"flex" => 4,
-								"placeholder" => "",
-								"value" => $customer['info_working_hours']
-							)
-						),
-						array(
-							array(
-								"type" => "comboboxdb",
-								"name" => "sales",
-								"caption" => "Sale",
-								"source" => array(
-									"table" => "bs_employees",
-									"name" => "fullname",
-									"value" => "id"
-								),
-								"default" => array(
-									"value" => "NULL",
-									"name" => "Not Selected"
-								),
-								"value" => $customer['sales']
-							)
-						),
-						array(
-							array(
-								"name" => "info_purchase",
-								"caption" => "Volume Buy ",
-								"placeholder" => "",
-								"value" => $customer['info_purchase']
-							)
-						),
-						array(
-							array(
-								"name" => "info_competitor",
-								"caption" => "competitor",
-								"placeholder" => "",
-								"value" => $customer['info_competitor']
+								"value" => $customer['default_pack']
 							)
 						)
 					)
@@ -245,6 +234,8 @@
 			)
 		)
 	);
+
+	
 
 	$modal->SetBlueprint($blueprint);
 	$modal->EchoInterface();

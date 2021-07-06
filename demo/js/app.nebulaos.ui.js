@@ -153,8 +153,10 @@ fn.ui = {
 		}
 	},
 	numberic :{
-		format : function(num){
-			return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+		format : function(num,scale){
+			if(typeof num != "number")num = parseFloat(num);
+			if(typeof scale == "undefined")scale = 2;
+			return num.toFixed(scale).toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 		},
 		phone : function(text){
 			if(isNaN(text)){

@@ -16,8 +16,10 @@
 				$("#tblQuick_order").DataTable().draw();
 				$("#tblQuickOrder").DataTable().draw();
 				
-				
+				$("form[name=form_addquick_order]")[0].reset();
+				$("form[name=form_addquick_order] select[name=customer_id]").val("").trigger('change.select2');;
 				$("#dialog_add_quick_order").modal("hide");
+				
 			}else{
 				fn.notify.warnbox(response.msg,"Oops...");
 			}

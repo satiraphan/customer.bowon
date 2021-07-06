@@ -44,6 +44,7 @@
 				"flex" => 4,
 				"value" => $employee['nickname']
 			),array(
+				"type" => "date",
 				"name" => "dob",
 				"caption" => "DOB",
 				"placeholder" => "",

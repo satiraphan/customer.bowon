@@ -21,7 +21,7 @@
 					"processing": true,
 					"serverSide": true,
 					"ajax": {
-						"url": "apps/sales/store/store-delviery.php",
+						"url": "apps/sales/store/store-order.php",
 						"data": function ( d ) {
 							d.delivery_date = $("form[name=combine_filer] input[name=delivery_date]").val();
 							d.customer_id= $("form[name=combine_filer] select[name=customer]").val();

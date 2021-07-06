@@ -95,7 +95,7 @@
 		
 		function EchoInterface_verticle(){
 			echo '<div class="row gutters-sm">';
-				echo '<div class="col-md-3 d-none d-md-block">';
+				echo '<div class="col-md-2 d-none d-md-block">';
 					echo '<div class="card">';
 						echo '<div class="card-body">';
 							echo '<nav class="nav flex-column nav-pills nav-gap-y-1">';
@@ -110,7 +110,7 @@
 						echo '</div>';
 					echo '</div>';
 				echo '</div>';
-			echo '<div class="col-md-9">';
+			echo '<div class="col-md-10">';
 				echo '<div class="card">';
 					echo '<div class="card-header border-bottom mb-3 d-flex d-md-none">';
 						echo '<ul class="nav nav-tabs card-header-tabs nav-gap-x-1" role="tablist">';

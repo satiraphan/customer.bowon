@@ -22,7 +22,8 @@
 		"user" => "bs_deliveries.user",
 		"comment" => "bs_deliveries.comment",
 		"customer_name" => "bs_orders.customer_name",
-		"date" => "bs_orders.date"
+		"date" => "bs_orders.date",
+		"info_payment" => "bs_orders.info_payment"
 	);
 
 	$where = '';
@@ -43,7 +44,7 @@
 			)
 		),
 		"where" => "1".$where,
-		"groupby" => "bs_deliveries.id"
+		"groupby" => "bs_orders.id"
 	);
 
 	$dbc->SetParam($table,$columns,$_GET['order'],$_GET['columns'],$_GET['search']);

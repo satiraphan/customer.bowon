@@ -38,22 +38,28 @@
 					</tr>
 				</tbody>
 			</table>
+			<div class="m-2">
+				<a href="javascript:;" class="btn btn-primary" onclick="fn.app.sales.order.append_split()">แยกบิล</a>
+			</div>
 			<form name="form_splitorder">
 				<input type="hidden" name="id" value="<?php echo $this->param['id'];?>">
 				<table class="table table-bordered table-form">
 					<tbody>
 						<tr>
-							<td><label>ส่งวันนี้</label></td>
+							<td><label>ใบที่หนึ่ง</label></td>
 							<td><input name="amount_a" type="text" class="form-control text-right" value="<?php echo $order['amount'];?>"></td>
 							<td><label>วันส่ง</label></td>
 							<td><input name="date_a" type="date" class="form-control text-right" value="<?php echo $order['delivery_date'];?>"></td>
+							
 						</tr>
 						<tr>
-							<td><label>คงเหลือ</label></td>
+							<td><label>ใบที่สอง</label></td>
 							<td><input name="amount_b" type="text" class="form-control text-right" value="0"></td>
 							<td><label>วันส่ง</label></td>
 							<td><input name="date_b" type="date" class="form-control text-right" value="<?php echo $order['delivery_date'];?>"></td>
+							
 						</tr>
+						
 				</table>
 			</form>
 			<?php

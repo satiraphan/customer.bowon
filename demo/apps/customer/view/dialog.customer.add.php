@@ -87,10 +87,71 @@
 							)
 						),array(
 							array(
+								"name" => "org_name",
+								"caption" => "ชื่อบริษัท",
+								"placeholder" => "Organization Name"
+							)
+						),array(
+							array(
+								"name" => "org_taxid",
+								"caption" => "หมายเลขผู้เสียภาษี",
+								"flex-label" => 3,
+								"flex" => 4,
+								"placeholder" => ""
+							),array(
+								"name" => "org_branch",
+								"caption" => "สาขา",
+								"flex-label" => 1,
+								"flex" => 4,
+								"placeholder" => "ระบุสาขา"
+							)
+						),array(
+							array(
 								"name" => "billing_address",
 								"type" => "textarea",
+								"flex-label" => 3,
+								"flex" => 9,
 								"caption" => "ที่อยู่ใบกำกับภาษี",
 								"placeholder" => "Address"
+							)
+						)
+					)
+				),
+				array(
+					"type" => "tab",
+					"group" => "group_b",
+					"name" => "รายละเอียด",
+					"items" => array(
+						array(
+							array(
+								"name" => "remark",
+								"caption" => "Remark",
+								"type" => "textarea",
+								"placeholder" => ""
+							)
+						),
+						array(
+							array(
+								"name" => "comment",
+								"caption" => "Comment",
+								"type" => "textarea",
+								"placeholder" => ""
+							)
+						),
+						array(
+							array(
+								"type" => "comboboxdb",
+								"name" => "default_sales",
+								"caption" => "Sale",
+								"source" => array(
+									"table" => "bs_employees",
+									"name" => "fullname",
+									"value" => "id"
+								),
+								"default" => array(
+									"value" => "NULL",
+									"name" => "Not Selected"
+								)
 							)
 						),array(
 							array(
@@ -106,12 +167,12 @@
 								"placeholder" => "Bank Detail"
 							),array(
 								"type" => "combobox",
-								"name" => "default_vat",
+								"name" => "default_vat_type",
 								"flex" => 2,
 								"value" => "0%",
 								"source" => array(
-									"0%",
-									"7%"
+									array(0,"0%"),
+									array(2,"7%")
 								),
 								"caption" => "ภาษีมูลค่าเพิ่ม"
 							)
@@ -120,11 +181,12 @@
 								"type" => "comboboxdatabank",
 								"source" => "db_payment",
 								"name" => "default_payment",
-								"caption" => "การจ่ายเงิน",
+								"caption" => "เงือนไขการชำระเงิน",
 								"default" => array(
 									"value" => "none",
 									"name" => "ไม่ระบุ"
 								),
+								"flex-label" => 3,
 								"flex" => 6
 							)
 						)
@@ -132,85 +194,15 @@
 				),
 				array(
 					"type" => "tab",
-					"group" => "group_b",
-					"name" => "รายละเอียด",
+					"group" => "group_c",
+					"name" => "ข้อมูลการแบ่ง Pack",
 					"items" => array(
-						
 						array(
 							array(
-								"name" => "info_need",
-								"caption" => "Need",
+								"name" => "default_pack",
+								"caption" => "Default Pack",
 								"type" => "textarea",
-								"flex" => 4,
-								"placeholder" => ""
-							),
-							array(
-								"name" => "info_memo",
-								"caption" => "บันทึก",
-								"type" => "textarea",
-								"flex" => 4,
-								"placeholder" => ""
-							)
-						),
-						array(
-							array(
-								"name" => "info_comment",
-								"caption" => "Comment",
-								"type" => "textarea",
-								"flex" => 4,
-								"placeholder" => ""
-							),
-							array(
-								"name" => "info_reference",
-								"caption" => "แนะนำจาก",
-								"type" => "textarea",
-								"flex" => 4,
-								"placeholder" => ""
-							)
-						),
-						array(
-							array(
-								"name" => "info_require",
-								"caption" => "REQUIRE ",
-								"type" => "textarea",
-								"flex" => 4,
-								"placeholder" => ""
-							),
-							array(
-								"name" => "info_working_hours",
-								"caption" => "WORKING HOUR",
-								"type" => "textarea",
-								"flex" => 4,
-								"placeholder" => ""
-							)
-						),
-						array(
-							array(
-								"type" => "comboboxdb",
-								"name" => "sales",
-								"caption" => "Sale",
-								"source" => array(
-									"table" => "bs_employees",
-									"name" => "fullname",
-									"value" => "id"
-								),
-								"default" => array(
-									"value" => "NULL",
-									"name" => "Not Selected"
-								)
-							)
-						),
-						array(
-							array(
-								"name" => "info_purchase",
-								"caption" => "Volume Buy ",
-								"placeholder" => ""
-							)
-						),
-						array(
-							array(
-								"name" => "info_competitor",
-								"caption" => "competitor",
+								"rows" => 10,
 								"placeholder" => ""
 							)
 						)

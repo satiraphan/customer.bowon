@@ -20,18 +20,19 @@ $("#tblOrder").DataTable({
 		{"bSortable":false		,"data":"id"	,"sClass":"hidden-xs text-center",	"sWidth": "20px"  },
 		{"bSortable":false		,"data":"id",	"sWidth": "40px","class":"text-center"	},
 		{"bSortable":false		,"data":"id",	"sWidth": "40px","class":"text-center"	},
-		{"bSort":true			,"data":"code"	},
+		{"bSortable":false		,"data":"id",	"sWidth": "40px","class":"text-center"	},
+		{"bSort":true			,"data":"code",	"class":"text-center"	},
 		{"bSort":true			,"data":"customer_name",	"class":"text-center"},
 		{"bSort":true			,"data":"amount",			"class":"text-right pr-2"	},
 		{"bSort":true			,"data":"price",			"class":"text-right pr-2"	},
-		{"bSort":true			,"data":"vat_amount",		"class":"text-right pr-2"	},
+		{"bSort":true			,"data":"vat",		"class":"text-right pr-2"	},
 		{"bSort":true			,"data":"net",				"class":"text-right pr-2"	},
 		{"bSort":true			,"data":"date",				"class":"text-center"	},
 		{"bSort":true			,"data":"delivery_date",	"class":"text-center"	},
 		{"bSortable":false		,"data":"id",				"class":"text-center"	},
 		{"bSort":true			,"data":"sales"										},
 		{"bSortable":false		,"data":"id","class":"text-center"  }
-	],"order": [[ 3, "desc" ]],
+	],"order": [[ 4, "desc" ]],
 	"createdRow": function ( row, data, index ) {
 		var selected = false,checked = "",s = '';
 		if ( $.inArray(data.DT_RowId, $("#tblOrder").data( "selected")) !== -1 ) {
@@ -40,25 +41,26 @@ $("#tblOrder").DataTable({
 		}
 		$("td", row).eq(0).html(fn.ui.checkbox("chk_order",data[0],selected));
 		$("td", row).eq(1).html(fn.ui.button("btn btn-xs btn-outline-dark","far fa-cut","fn.app.sales.order.dialog_split("+data[0]+")"));
-		s += fn.ui.button("btn btn-xs btn-outline-danger mr-1","far fa-pen ","fn.app.sales.order.dialog_edit("+data[0]+")");
-		
-		$("td", row).eq(2).html(s);
+		$("td", row).eq(2).html(fn.ui.button("btn btn-xs btn-outline-danger mr-1","far fa-pen ","fn.app.sales.order.dialog_edit("+data[0]+")"));
+		$("td", row).eq(3).html(fn.ui.button("btn btn-xs btn-danger mr-1","far fa-trash ","fn.app.sales.order.dialog_remove_each("+data[0]+")"));
 		
 		
 		if(data.delivery_id == null){
-			$("td", row).eq(10).html(fn.ui.button("btn btn-xs btn-outline-danger","far fa-truck ","fn.app.sales.order.dialog_add_delivery("+data[0]+")"));
+			$("td", row).eq(11).html(fn.ui.button("btn btn-xs btn-outline-danger","far fa-truck ","fn.app.sales.order.dialog_add_delivery("+data[0]+")"));
 		}
 		
 		if(data.delivery_id != null){
 			s = '';
 			s += fn.ui.button("btn btn-xs btn-outline-warning mr-1","far fa-truck ","fn.app.sales.order.dialog_postpone("+data[0]+")");
 			s += fn.ui.button("btn btn-xs btn-outline-danger mr-1","far fa-lock ","fn.app.sales.order.dialog_lock("+data[0]+")");
-			$("td", row).eq(11).html(s);
+			$("td", row).eq(12).html(s);
 		}
+		
+		$("td", row).eq(3).html('<a href="#apps/schedule/index.php?view=printable&order_id='+data.id+'">'+data.code+'</a>');
 		
 		s = '';
 		
-		$("td", row).eq(13).html(s).attr("date",data.delivery_date).addClass("show_date");
+		$("td", row).eq(14).html(s).attr("date",data.delivery_date).addClass("show_date");
 	},
 	"drawCallback": function( settings ) {
        fn.app.schedule.order.date_update();

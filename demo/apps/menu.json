@@ -181,6 +181,11 @@
 				"name" : "Trust Receipt",
 				"icon" : "far fa-folder-open",
 				"path" : "apps/trust_receipt/index.php"
+			},{
+				"appname" : "sigmargin",
+				"name" : "SigMargin",
+				"icon" : "far fa-folder-open",
+				"path" : "apps/sigmargin/index.php"
 			}
 		]
 	},{
@@ -221,7 +226,7 @@
 				"appname" : "report_sale",
 				"name" : "รายงานการขาย",
 				"icon" : "far fa-chart-pie",
-				"path" : "apps/report_sale/index.php"
+				"path" : "apps/report_sales/index.php"
 			},{
 				"appname" : "report_stock",
 				"name" : "Stock",

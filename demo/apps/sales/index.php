@@ -51,11 +51,12 @@
 				if($os->allow("sales","add"))include "control/controller.order.add.js";
 				if($os->allow("sales","edit"))include "control/controller.order.edit.js";
 				if($os->allow("sales","remove"))include "control/controller.order.remove.js";
-				if($os->allow("sales","split"))include "control/controller.order.split.js";
-				if($os->allow("sales","postpone"))include "control/controller.order.postpone.js";
-				if($os->allow("sales","lock"))include "control/controller.order.lock.js";
-				if($os->allow("sales","print"))include "control/controller.order.print.js";
+				if($os->allow("sales","edit"))include "control/controller.order.split.js";
+				if($os->allow("sales","edit"))include "control/controller.order.postpone.js";
+				if($os->allow("sales","edit"))include "control/controller.order.lock.js";
+				if($os->allow("sales","view"))include "control/controller.order.print.js";
 				if($os->allow("sales","edit"))include "control/controller.order.add_delivery.js";
+				if($os->allow("sales","remove"))include "control/controller.order.remove_each.js";
 				break;
 			case "delivery":
 				include "control/controller.delivery.view.js";

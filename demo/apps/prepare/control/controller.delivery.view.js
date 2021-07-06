@@ -23,6 +23,7 @@ $("#tblDelivery").DataTable({
 		{"bSort":true			,"data":"date",				"class":"text-center"	},
 		{"bSort":true			,"data":"delivery_date",	"class":"text-center"	},
 		{"bSortable":false		,"data":"id",				"class":"text-center"	},
+		{"bSortable":false		,"data":"info_payment",				"class":"text-center"	},
 		{"bSortable":false		,"data":"id",				"class":"text-center"	},
 		{"bSortable":false		,"data":"status","class":"text-center"  }
 	],"order": [[ 3, "desc" ]],
@@ -50,6 +51,12 @@ $("#tblDelivery").DataTable({
 		
 		
 		$("td", row).eq(7).html(s);
+		
+		if(data.status == "1"){
+			$("td", row).eq(10).html('<span class="badge badge-primary">แบ่งแพ็คแล้ว</span>');
+		}else if(data.status == "0"){
+			$("td", row).eq(10).html('<span class="badge badge-warning">รอการจัดเตรียม</span>');
+		}
 	
 	}
 });

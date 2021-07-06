@@ -24,6 +24,7 @@
 		function body(){
 			$dbc = $this->dbc;
 			$order = $dbc->GetRecord("bs_quick_orders","*","id=".$this->param['id']);
+			$customer = $dbc->GetRecord("bs_customers","*","id=".$order['customer_id']);
 			
 			echo '<ul class="list-group list-group-horizontal mb-3">';
 				echo '<li class="list-group-item flex-fill text-center">';
@@ -36,6 +37,19 @@
 					echo '<div class="text-secondary">Sales</div><strong>'.$this->os->auth['display'].' </strong>';
 				echo '</li>';
 			echo '</ul>';
+			
+			
+			echo '<table class="table">';
+				echo '<tbody>';
+					echo '<tr><th class="text-right">customer</th><td>'.$customer['name'].'</td></tr>';
+					echo '<tr><th class="text-right">created</th><td>'.$order['created'].'</td></tr>';
+					echo '<tr><th class="text-right">amount</th><td>'.$order['amount'].'</td></tr>';
+					echo '<tr><th class="text-right">price</th><td>'.$order['price'].'</td></tr>';
+					echo '<tr><th class="text-right">spot</th><td>'.$order['rate_spot'].'</td></tr>';
+					echo '<tr><th class="text-right">exchange</th><td>'.$order['rate_exchange'].'</td></tr>';
+					echo '<tr><th class="text-right">remark</th><td>'.$order['remark'].'</td></tr>';
+				echo '</tbody>';
+			echo '</table>';
 		}
 	}
 	

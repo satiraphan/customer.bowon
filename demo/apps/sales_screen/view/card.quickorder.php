@@ -1,6 +1,6 @@
 <div class="card mb-3">
 	<div class="card-header border-0">
-		<h6>Saels Quick Note </h6>
+		<h6>Sales (Quick)</h6>
 	</div>
 	<div class="card-body">
 		<table id="tblQuickOrder" class="datatable table table-striped table-sm table-bordered nowrap">
@@ -15,9 +15,18 @@
 					<th class="text-center">spot</th>
 					<th class="text-center">exchange</th>
 					<th class="text-center">remark</th>
+					<th class="text-center">sales</th>
 				</tr>
 			</thead>
 			<tbody>
+			</tbody>
+			<tbody>
+				<tr>
+					<th class="text-right" colspan="2">ยอดรวม</th>
+					<th class="text-center" xname="tAmount"></th>
+					<th class="text-right">รวมทั้งหมด</th>
+					<th class="text-center" colspan="4" xname="tValue"></th>
+				</tr>
 			</tbody>
 		</table>
 		<div>
@@ -33,7 +42,7 @@
 							}
 						?>
 						</select>
-					<input type="number" name="amount" class="form-control" placeholder="จำนวน">
+					<input type="number" step=".0001" name="amount" class="form-control" placeholder="จำนวน">
 					<input name="price" class="form-control" placeholder="ราคา">
 					<select name="vat_type" class="form-control">
 						<option value="0">ไม่มีภาษี</option>

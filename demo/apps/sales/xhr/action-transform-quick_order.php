@@ -15,7 +15,7 @@
 	$customer = $dbc->GetRecord("bs_customers","*","id=".$order['customer_id']);
 	$total = $order['amount']*$order['price'];
 	if($order['vat_type']=="2"){
-		$vat = $order['price']*0.07;
+		$vat = $total*0.07;
 	}else{
 		$vat = 0;
 	}
@@ -27,7 +27,7 @@
 		"#customer_id" => $customer['id'],
 		"customer_name" => $customer['name'],
 		"date" => $order['created'],
-		"#sales" => is_null($customer['sales'])?"NULL":$customer['sales'],
+		"#sales" => is_null($customer['default_sales'])?"NULL":$customer['default_sales'],
 		"#user" => $os->auth['id'],
 		'#type' => 1,
 		"#parent" => 'NULL',
@@ -36,7 +36,7 @@
 		'#amount' => $order['amount'],
 		'#price' => $order['price'],
 		'#vat_type' => $order['vat_type'],
-		'#vat_amount' => $vat,
+		'#vat' => $vat,
 		'#total' => $total,
 		'#net' => $net,
 		"#status" => 1,

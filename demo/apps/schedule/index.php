@@ -17,18 +17,22 @@
 	$panel->setMeta(array(
 		array("order","Order","far fa-user"),
 	));
-?>
-<?php
 	$panel->PageBreadcrumb();
+	
+	
+	if($panel->getView()=="printable"){
+		include "view/page.order.view.php";
+		
+	}else{	
+		echo '<div class="row">';
+			echo '<div class="col-xl-12">';
+				$panel->EchoInterface();
+			echo '</div>';
+		echo '</div>';
+	}
 ?>
-<div class="row">
-	<div class="col-xl-12">
-	<?php
-		$panel->EchoInterface();
-	?>
-	</div>
-</div>
 <script>
+
 	var plugins = [
 		'apps/schedule/include/interface.js',
 		'apps/customer/include/interface.js',
@@ -57,6 +61,7 @@
 				if($os->allow("schedule","add"))include "../sales/control/controller.order.add.js";
 				if($os->allow("schedule","edit"))include "../sales/control/controller.order.edit.js";
 				if($os->allow("schedule","remove"))include "../sales/control/controller.order.remove.js";
+				if($os->allow("schedule","remove"))include "../sales/control/controller.order.remove_each.js";
 				if($os->allow("schedule","edit"))include "../sales/control/controller.order.split.js";
 				if($os->allow("schedule","edit"))include "../sales/control/controller.order.postpone.js";
 				if($os->allow("schedule","edit"))include "../sales/control/controller.order.lock.js";

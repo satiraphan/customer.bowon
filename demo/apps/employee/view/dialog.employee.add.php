@@ -36,6 +36,7 @@
 				"placeholder" => "Nickname",
 				"flex" => 4
 			),array(
+				"type" => "date",
 				"name" => "dob",
 				"caption" => "DOB",
 				"placeholder" => "",

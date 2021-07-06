@@ -13,11 +13,11 @@ $("#tblOrder").DataTable({
 		{"bSort":true			,"data":"customer_name","class":"text-center"	},
 		{"bSort":true			,"data":"amount","class":"text-right"	},
 		{"bSort":true			,"data":"price","class":"text-right"	},
-		{"bSort":true			,"data":"vat_amount","class":"text-right"	},
+		{"bSort":true			,"data":"vat","class":"text-right"	},
 		{"bSort":true			,"data":"net","class":"text-right"	},
 		{"bSort":true			,"data":"delivery_date","class":"text-center"	},
 		{"bSort":true			,"data":"delivery_code","class":"text-center"	},
-		{"bSortable":false		,"data":"id"		,"sClass":"text-center" , "sWidth": "110px"  }
+		{"bSortable":false		,"data":"id"		,"sClass":"text-center" , "sWidth": "140px"  }
 	],"order": [[ 1, "desc" ]],
 	"createdRow": function ( row, data, index ) {
 		var selected = false,checked = "",s = '';
@@ -28,7 +28,7 @@ $("#tblOrder").DataTable({
 		$("td", row).eq(0).html(fn.ui.checkbox("chk_order",data[0],selected));
 		$("td", row).eq(4).html(fn.ui.numberic.format(data.amount));
 		$("td", row).eq(5).html(fn.ui.numberic.format(data.price));
-		$("td", row).eq(6).html(fn.ui.numberic.format(data.vat_amount));
+		$("td", row).eq(6).html(fn.ui.numberic.format(data.vat));
 		$("td", row).eq(7).html(fn.ui.numberic.format(data.net));
 		
 		if(data.delivery_id == null){
@@ -45,7 +45,8 @@ $("#tblOrder").DataTable({
 	
 		
 		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-cut ","fn.app.sales.order.dialog_split("+data[0]+")");
-		s += fn.ui.button("btn btn-xs btn-outline-dark","far fa-pen","fn.app.sales.order.dialog_edit("+data[0]+")");
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-pen","fn.app.sales.order.dialog_edit("+data[0]+")");
+		s += fn.ui.button("btn btn-xs btn-danger","far fa-trash","fn.app.sales.order.dialog_remove_each("+data[0]+")");
 		
 		$("td", row).eq(10).html(s);
 	}
