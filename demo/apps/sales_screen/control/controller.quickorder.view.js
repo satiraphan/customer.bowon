@@ -1,4 +1,5 @@
 $('#tblQuickOrder').DataTable({
+		"paging": false,
 		responsive: true,
 		"bStateSave": true,
 		"autoWidth" : true,

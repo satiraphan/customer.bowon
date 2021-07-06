@@ -37,7 +37,14 @@
 				echo '<td class="text-right">'.number_format($order['total'],4).'</td>';
 				echo '<td class="text-right">'.number_format($order['net'],4).'</td>';
 				echo '<td class="text-Center">'.$order['delivery_date'].'</td>';
-				echo '<td class="text-Center">'.$order['sales'].'</td>';
+				echo '<td class="text-Center">';
+					if($order['sales']!=""){
+						$sales = $dbc->GetRecord("bs_employees","*","id=".$order['sales']);
+						echo $sales['fullname'];
+					}else{
+						echo "-";
+					}
+				echo '</td>';
 			echo '</tr>';
 			
 			$total_amount += $order['amount'];
