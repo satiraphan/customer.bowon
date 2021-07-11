@@ -18,8 +18,8 @@
 			</th>
 			<th class="text-center"><i class="far fa-sm fa-cut"></i></th>
 			<th class="text-center"><i class="far fa-sm fa-pen"></i></th>
-			<th class="text-center"><i class="far fa-sm fa-trash"></i></th>
 			<th class="text-center">หายเลขสั่งซื้อ</th>
+			<th class="text-center">หมายเลขส่งของ</th>
 			<th class="text-center">ชื่อลูกค้า</th>
 			<th class="text-center">จำนวน</th>
 			<th class="text-center">ราคา/กิโลกรัม</th>

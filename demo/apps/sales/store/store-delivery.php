@@ -15,6 +15,7 @@
 		"order_code" => "bs_orders.code",
 		"type" => "bs_deliveries.type",
 		"delivery_date" => "bs_deliveries.delivery_date",
+		"delivery_date" => "bs_deliveries.delivery_date",
 		"created" => "bs_deliveries.created",
 		"updated" => "bs_deliveries.updated",
 		"status" => "bs_deliveries.status",
@@ -23,7 +24,11 @@
 		"comment" => "bs_deliveries.comment",
 		"customer_name" => "bs_orders.customer_name",
 		"date" => "bs_orders.date",
-		"info_payment" => "bs_orders.info_payment"
+		"info_payment" => "bs_orders.info_payment",
+		"billing_id" => "bs_deliveries.billing_id",
+		"payment_note" => "bs_deliveries.payment_note"
+		
+		
 	);
 
 	$where = '';

@@ -48,9 +48,29 @@ $("#tblDelivery").DataTable({
 		}else{
 			s += fn.ui.button("btn btn-xs btn-outline-dark mr-1","far fa-boxes","fn.app.sales.delivery.dialog_packing("+data[0]+")");
 		}
-		
-		
 		$("td", row).eq(7).html(s);
+		
+		
+		s = '';
+		if(data.payment_note == null || data.payment_note == ""){
+			s += fn.ui.button("btn btn-xs btn-outline-dark","far fa-dollar-sign","fn.app.sales.delivery.dialog_payment("+data[0]+")");
+		}else{
+			var obj = jQuery.parseJSON( data.payment_note);
+			s += '<a href="javascript:;" onclick="fn.app.sales.delivery.dialog_payment('+data[0]+')">';
+			s += obj.bank + "," + obj.payment;
+			s += '</a>';
+		}
+		$("td", row).eq(8).html(s);
+		
+		s = '';
+		if(data.billing_id == ""){
+			s += fn.ui.button("btn btn-xs btn-outline-dark","far fa-file","fn.app.sales.delivery.dialog_billing("+data[0]+")");
+		}else{
+			s += '<a href="javascript:;" onclick="fn.app.sales.delivery.dialog_billing('+data[0]+')">';
+			s += data.billing_id;
+			s += '</a>';
+		}
+		$("td", row).eq(9).html(s);
 		
 		if(data.status == "1"){
 			$("td", row).eq(10).html('<span class="badge badge-primary">แบ่งแพ็คแล้ว</span>');

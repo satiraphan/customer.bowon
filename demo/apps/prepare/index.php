@@ -50,7 +50,8 @@
 				if($os->allow("prepare","edit"))include "../sales/control/controller.delivery.packing.js";
 				if($os->allow("prepare","edit"))include "../sales/control/controller.delivery.combine.js";
 				if($os->allow("prepare","edit"))include "../sales/control/controller.delivery.transport.js";
-				
+				if($os->allow("prepare","edit"))include "../sales/control/controller.delivery.billing.js";
+				if($os->allow("prepare","edit"))include "../sales/control/controller.delivery.payment.js";
 				break;
 }
 	?>

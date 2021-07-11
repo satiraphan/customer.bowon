@@ -21,7 +21,7 @@
 			<th class="text-center">วันที่ส่ง</th>
 			<th class="text-center">แบ่งแพ็ค</th>
 			<th class="text-center">เงื่อนไขการชำระเงิน</th>
-			<th class="text-center">ส่งของ</th>
+			<th class="text-center">บิล</th>
 			<th class="text-center">สถานะ</th>
 		</tr>
 	</thead>

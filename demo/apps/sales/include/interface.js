@@ -24,8 +24,8 @@ var sales = {
 		dialog_lookup : fn.noaccess,
 		dialog_combine : fn.noaccess,
 		dialog_packing : fn.noaccess,
-		
 		dialog_payment : fn.noaccess,
+		dialog_billing : fn.noaccess,
 		dialog_remove : fn.noaccess,
 		dialog_transport : fn.noaccess,
 		
@@ -35,10 +35,9 @@ var sales = {
 		
 		
 		payment : fn.noaccess,
+		billing : fn.noaccess,
 		remove : fn.noaccess,
 		transport : fn.noaccess,
-		
-		
 		combine : fn.noaccess,
 		combine_reload : fn.noaccess
 	},

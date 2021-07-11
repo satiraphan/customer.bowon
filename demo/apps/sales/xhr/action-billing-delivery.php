@@ -10,16 +10,10 @@
 	$dbc = new dbc;
 	$dbc->Connect();
 	$os = new oceanos($dbc);
-	
-	$json = array(
-		"bank" =>$_POST['bank'],
-		"payment" =>$_POST['payment'],
-		"remark" => $_POST['remark']
-	);
-	
+
 	
 	$data = array(
-		'payment_note' => json_encode($json,JSON_UNESCAPED_UNICODE),
+		'billing_id' => $_POST['billing_id'],
 		'#updated' => 'NOW()',
 	);
 

@@ -19,9 +19,9 @@ $("#tblOrder").DataTable({
 	"aoColumns": [
 		{"bSortable":false		,"data":"id"	,"sClass":"hidden-xs text-center",	"sWidth": "20px"  },
 		{"bSortable":false		,"data":"id",	"sWidth": "40px","class":"text-center"	},
-		{"bSortable":false		,"data":"id",	"sWidth": "40px","class":"text-center"	},
-		{"bSortable":false		,"data":"id",	"sWidth": "40px","class":"text-center"	},
-		{"bSort":true			,"data":"code",	"class":"text-center"	},
+		{"bSortable":true		,"data":"id",	"sWidth": "40px","class":"text-center"	},
+		{"bSortable":true		,"data":"code", "class":"text-center"	},
+		{"bSort":true			,"data":"delivery_code",	"class":"text-center"	},
 		{"bSort":true			,"data":"customer_name",	"class":"text-center"},
 		{"bSort":true			,"data":"amount",			"class":"text-right pr-2"	},
 		{"bSort":true			,"data":"price",			"class":"text-right pr-2"	},

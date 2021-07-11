@@ -15,7 +15,8 @@ $("#tblDelivery").DataTable({
 		{"bSortable":true	,"data":"amount"	 	,class:"text-right"	},
 		{"bSortable":true	,"data":"customer_name" ,class:"text-center"},
 		{"bSortable":true	,"data":"status" ,class:"text-center"},
-		{"bSortable":false	,"data":"id"			,class:"text-center" , "sWidth": "80px" }
+		{"bSortable":false	,"data":"id"			,class:"text-center" , "sWidth": "80px" },
+		{"bSortable":false	,"data":"id"			,class:"text-center" }
 		
 	],"order": [[ 1, "desc" ]],
 	
@@ -43,6 +44,11 @@ $("#tblDelivery").DataTable({
 		}
 		s += fn.ui.button("btn btn-xs btn-outline-dark","far fa-pen","fn.app.sales.delivery.dialog_edit("+data[0]+")");
 		$("td", row).eq(8).html(s);
+		
+		s = '';
+		s += fn.ui.button("btn btn-xs btn-outline-dark mr-2","far fa-dollar-sign","fn.app.sales.delivery.dialog_payment("+data[0]+")");
+		s += fn.ui.button("btn btn-xs btn-outline-dark","far fa-file","fn.app.sales.delivery.dialog_billing("+data[0]+")");
+		$("td", row).eq(9).html(s);
 		
 	}
 });

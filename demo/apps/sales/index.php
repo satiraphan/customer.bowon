@@ -60,18 +60,19 @@
 				break;
 			case "delivery":
 				include "control/controller.delivery.view.js";
-				if($os->allow("sales","packing"))include "control/controller.delivery.combine.js";
-				if($os->allow("sales","packing"))include "control/controller.delivery.packing.js";
-				if($os->allow("sales","payment"))include "control/controller.delivery.payment.js";
+				if($os->allow("sales","edit"))include "control/controller.delivery.combine.js";
+				if($os->allow("sales","edit"))include "control/controller.delivery.packing.js";
+				if($os->allow("sales","edit"))include "control/controller.delivery.payment.js";
+				if($os->allow("sales","edit"))include "control/controller.delivery.billing.js";
 				if($os->allow("sales","remove"))include "control/controller.delivery.remove.js";
-				if($os->allow("sales","transport"))include "control/controller.delivery.transport.js";
+				if($os->allow("sales","approve"))include "control/controller.delivery.transport.js";
 				break;
 			case "quick_order":
 				include "control/controller.quick_order.view.js";
 				if($os->allow("sales","add"))include "control/controller.quick_order.add.js";
 				if($os->allow("sales","edit"))include "control/controller.quick_order.edit.js";
 				if($os->allow("sales","remove"))include "control/controller.quick_order.remove.js";
-				if($os->allow("sales","transform"))include "control/controller.quick_order.transform.js";
+				if($os->allow("sales","approve"))include "control/controller.quick_order.transform.js";
 				break;
 			case "packing":
 				include "control/controller.packing.view.js";

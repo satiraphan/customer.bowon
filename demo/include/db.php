@@ -237,7 +237,7 @@ class dbc extends SQLBuilder{
 		$sql="SELECT * FROM $table WHERE $condition";
 
 		$rst = mysqli_query($this->conn,$sql) or die(mysqli_error($this->conn)."\r\n".$sql."\r\n");
-		if (mysqli_connect_errno($this->conn)){
+		if (mysqli_connect_errno()){
 			printf("Connect failed: %s\n", $this->conn->connect_error);
 			return false;
 		}else if(mysqli_num_rows($rst)>0){
@@ -273,7 +273,7 @@ class dbc extends SQLBuilder{
 		$sql="SELECT COUNT(*) AS NumberOfAll FROM $table WHERE $condition";
 		
 		$rst = mysqli_query($this->conn,$sql);
-		if (mysqli_connect_errno($this->conn)) {
+		if (mysqli_connect_errno()) {
 			printf("Connect failed: %s\n", $this->conn->connect_error);
 			return false;
 		}else{
@@ -292,7 +292,7 @@ class dbc extends SQLBuilder{
 		$sql="SELECT SUM($field) AS sum FROM $table WHERE $condition";
 		
 		$rst = mysqli_query($this->conn,$sql);
-		if (mysqli_connect_errno($this->conn)) {
+		if (mysqli_connect_errno()) {
 			printf("Connect failed: %s\n", $this->conn->connect_error);
 			return false;
 		}else{
@@ -326,7 +326,7 @@ class dbc extends SQLBuilder{
 	function QueryAndFetch($sql){
 		//**This Method look alike GetRecord() , you can use your SQL that unlike [SELECT FROM WHERE] such as LEFT JOIN, RIGHT JOIN etc.
 		$rst = mysqli_query($this->conn,$sql);
-		if (mysqli_connect_errno($this->conn)) {
+		if (mysqli_connect_errno()) {
 			printf("Connect failed: %s\n", $this->conn->connect_error);
 			return false;
 		}else{

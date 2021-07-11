@@ -13,8 +13,10 @@
 			<th class="text-center">Customer</th>
 			<th class="text-center">Status</th>
 			<th class="text-center">Action</th>
+			<th class="text-center">Payment</th>
 		</tr>
 	</thead>
 	<tbody>
 	</tbody>
 </table>
+
